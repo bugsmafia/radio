@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/onsenui.css"/>
     <link rel="stylesheet" href="css/onsen-css-components.css"/>
+	<link rel="stylesheet" href="css/material-design-iconic-font/css/material-design-iconic-font.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
     <script src="js/onsenui.js"></script>
 	<script src="js/script.js"></script>
@@ -13,9 +14,7 @@
   <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
     <ons-page>
       <ons-list>
-        <ons-list-item onclick="fn.load('home.html')" tappable>
-          Home
-        </ons-list-item>
+        <ons-list-item onclick="fn.load('home.html')" tappable>Сейчас в эфире</ons-list-item>
         <ons-list-item onclick="fn.load('settings.html')" tappable>Настройки</ons-list-item>
         <ons-list-item onclick="fn.load('about.html')" tappable>О приложении</ons-list-item>
       </ons-list>
@@ -46,7 +45,7 @@
 				<div class="song">Неизвестная песня</div>
 				<div class="artist">Неизвестный исполнитель</div>
 			</div>
-			<div class="play"></div>
+			<div class="play"><ons-icon icon="md-play"></ons-icon></div>
 		</div>
 	</footer>
   </ons-page>

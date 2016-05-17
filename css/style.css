@@ -20,6 +20,20 @@ footer .now {
     float: left;
     margin-right: 8px;
 }
+footer .play {
+    /* background: #000; */
+    display: block;
+    width: 52px;
+    height: 52px;
+    float: right;
+    margin-left: 8px;
+	    font-size: 43px;
+    text-align: center;
+}
+footer .track {
+    width: calc(100% - 150px);
+    float: left;
+}
 footer .artist {
     color: rgba(0,0,0,0.60);
 }
