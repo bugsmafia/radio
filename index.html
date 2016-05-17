@@ -4,12 +4,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/onsenui.css"/>
     <link rel="stylesheet" href="css/onsen-css-components.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
     <script src="js/onsenui.js"></script>
-    <script>
-      ons.ready(function() {
-        // Init code here
-      });
-    </script>
+	<script src="js/script.js"></script>
   </head>
 <body>
 <ons-splitter>
@@ -19,12 +16,8 @@
         <ons-list-item onclick="fn.load('home.html')" tappable>
           Home
         </ons-list-item>
-        <ons-list-item onclick="fn.load('settings.html')" tappable>
-          Settings
-        </ons-list-item>
-        <ons-list-item onclick="fn.load('about.html')" tappable>
-          About
-        </ons-list-item>
+        <ons-list-item onclick="fn.load('settings.html')" tappable>Настройки</ons-list-item>
+        <ons-list-item onclick="fn.load('about.html')" tappable>О приложении</ons-list-item>
       </ons-list>
     </ons-page>
   </ons-splitter-side>
@@ -46,6 +39,16 @@
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       Swipe right to open the menu!
     </p>
+	<footer>
+		<div class="wrap">
+			<div class="now"></div>
+			<div class="track">
+				<div class="song">Неизвестная песня</div>
+				<div class="artist">Неизвестный исполнитель</div>
+			</div>
+			<div class="play"></div>
+		</div>
+	</footer>
   </ons-page>
 </ons-template>
 
@@ -57,9 +60,7 @@
           <ons-icon icon="md-menu"></ons-icon>
         </ons-toolbar-button>
       </div>
-      <div class="center">
-        Settings
-      </div>
+      <div class="center">Настройки</div>
     </ons-toolbar>
   </ons-page>
 </ons-template>
@@ -72,27 +73,10 @@
           <ons-icon icon="md-menu"></ons-icon>
         </ons-toolbar-button>
       </div>
-      <div class="center">
-        About
-      </div>
+      <div class="center">О приложении</div>
     </ons-toolbar>
   </ons-page>
 </ons-template>
 
-<script>
-window.fn = {};
-
-window.fn.open = function() {
-  var menu = document.getElementById('menu');
-  menu.open();
-};
-
-window.fn.load = function(page) {
-  var content = document.getElementById('content');
-  var menu = document.getElementById('menu');
-  content.load(page)
-    .then(menu.close.bind(menu));
-};
-</script>
 </body>
 </html>
