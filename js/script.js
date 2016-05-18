@@ -19,15 +19,6 @@ function infoCookie(type, id, md, artist, song) {
 		infoAlbum(type, id, md, artist, song);
 	};
 }
-// Куки трека котоырй играет
-function infoCookieNow(id, md, artist, song) {
-	if ($.cookie(md)) {
-		jQuery('#' + type + ' #' + id + ' img').attr('src', $.cookie(md));
-		jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $.cookie(md) + ')');
-	} else {
-		infoAlbum(type, id, md, artist, song);
-	};
-}
 // Тянем информацию об альбоме
 function infoAlbum(type, id, md, artist, song) {
 	var api = '88571316d4e244f24172ea9a9bf602fe';
@@ -44,11 +35,7 @@ function infoAlbum(type, id, md, artist, song) {
 							$himg = jQuery(this).text();
 							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
 							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
-							jQuery.cookie(md, $himg, {
-								expires: 14,
-								path: '/',
-								domain: '.radio13.ru'
-							});
+							localStorage.setItem(md, $himg);
 						} else {
 							infoArtist(type, id, md, artist, song);
 						};
@@ -78,11 +65,7 @@ function infoArtist(type, id, md, artist, song) {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
 							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
-							jQuery.cookie(md, $himg, {
-								expires: 7,
-								path: '/',
-								domain: '.radio13.ru'
-							});
+							localStorage.setItem(md, $himg);
 						} else {
 							$himg = 'images/no-image.png';
 						}
@@ -103,7 +86,7 @@ function LoadStatus() {
 }
 // Обновляем статус эфира
 function UpdateStatus(now) {
-	if ($.cookie('TrackIdNow') == now) {} else {
+	if (localStorage.TrackIdNow == now) {} else {
 		jQuery.getJSON("http://app.radio13.ru/status/json.php?i=l", function(data) {
 			StatusAnimation('hide');
 			setTimeout(function() {
@@ -116,11 +99,7 @@ function UpdateStatus(now) {
 				jQuery('footer .wrap .track .artist').text(data.a);
 				// Обновляет куки
 			}, 1000);
-			jQuery.cookie('TrackIdNow', data.id, {
-				expires: 1,
-				path: '/',
-				domain: '.radio13.ru'
-			});
+			localStorage.setItem('TrackIdNow', data.id);
 			infoAlbum('playinfo', 'playinfoimg', 'TrackIdNowImg', data.a, data.s);
 			StatusAnimation('show');
 		});
@@ -137,11 +116,7 @@ function StatusAnimation(type) {
 	}
 }
 // Устанавливаем первоначальное значение куки о треке
-jQuery.cookie('TrackIdNow', '', {
-	expires: 1,
-	path: '/',
-	domain: '.radio13.ru'
-});
+localStorage.setItem('TrackIdNow', '');
 
 function getinfo() {
 	$.getJSON("http://app.radio13.ru/status/json.php?i=i", function(info) {
@@ -208,7 +183,7 @@ function getinfo() {
 LoadStatus();
 setInterval(function(){
 	LoadStatus();
-	$('#trace').html(window.location.pathname+' '+$.cookie('TrackIdNow') );
+	$('#trace').html(window.location.pathname+' '+localStorage.TrackIdNow);
 }, 10000);
 
 function titleupdpage(page) {
