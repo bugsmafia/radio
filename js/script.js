@@ -227,7 +227,7 @@ var status = 0;
 function streamplay() {
 	if (status == false) {
 		$('.play ons-icon').attr('icon', 'md-stop');
-		player.Play('http://play.radio13.ru/aac');
+		player.Play('http://play.radio13.ru/mp3');
 		status = 1;
 	} else if (status == true) {
 		status = 0;
