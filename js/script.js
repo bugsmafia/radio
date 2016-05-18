@@ -1,8 +1,3 @@
-$i = 0;
-$id = 1;
-var voted = false;
-// Функция запроса куки
-
 // Тянем информацию об альбоме
 function infoAlbum(type, id, md, artist, song) {
 	var api = '88571316d4e244f24172ea9a9bf602fe';
@@ -14,16 +9,40 @@ function infoAlbum(type, id, md, artist, song) {
 			jQuery(xml).find('album').each(function() {
 				jQuery(this).find('image').each(function() {
 					var img = jQuery(this).attr('size');
+					if (img == "small") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'S', $himg);
+						}
+					};
+					if (img == "medium") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'M', $himg);
+						}
+					};
 					if (img == "large") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
 							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
 							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
-							localStorage.setItem(md, $himg);
+							localStorage.setItem(md+'L', $himg);
 						} else {
 							infoArtist(type, id, md, artist, song);
-						};
+						}
 					};
+					if (img == "extralarge") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'E', $himg);
+						}
+					}
+					if (img == "mega") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'M', $himg);
+						}
+					}
 				})
 			});
 		},
@@ -45,13 +64,38 @@ function infoArtist(type, id, md, artist, song) {
 			jQuery(xml).find('artist').each(function() {
 				jQuery(this).find('image').each(function() {
 					var img = jQuery(this).attr('size');
+					if (img == "small") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'S', $himg);
+						}
+					};
+					if (img == "medium") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'M', $himg);
+						}
+					};
 					if (img == "large") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
+							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
 							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
-							localStorage.setItem(md, $himg);
+							localStorage.setItem(md+'L', $himg);
 						} else {
-							$himg = 'images/no-image.png';
+							infoArtist(type, id, md, artist, song);
+						}
+					};
+					if (img == "extralarge") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'E', $himg);
+						}
+					}
+					if (img == "mega") {
+						if (jQuery(this).text()) {
+							$himg = jQuery(this).text();
+							localStorage.setItem(md+'M', $himg);
 						}
 					}
 				})
@@ -102,68 +146,6 @@ function StatusAnimation(type) {
 // Устанавливаем первоначальное значение куки о треке
 localStorage.setItem('TrackIdNow', '');
 
-function getinfo() {
-	$.getJSON("http://app.radio13.ru/status/json.php?i=i", function(info) {
-		$i = info.i;
-		$l = info.l;
-		$u = info.u;
-		$sv = parseFloat($l) + parseFloat($u);
-		if ($sv != 0) {
-			var prc = Math.round(($l * 100) / $sv);
-			$('.determinate').width(prc + '%');
-		} else {
-			$('.determinate').width('0%');
-		}
-		$('#' + $i + '_likes').text($l);
-		$('#' + $i + '_unlikes').text($u);
-		if ($i != $id) {
-			$.getJSON("http://app.radio13.ru/status/json.php?i=l", function(load) {
-				$id = load.id;
-				$a = load.a;
-				$s = load.s;
-				$c = load.c;
-				$vkmus = load.vk;
-				$('.track .artist').text($a);
-				$('.track .song').text($s);
-				$('#imgalb').attr('data-caption', $a + ' - ' + $s);
-				$('body').attr('id', $id);
-				$('.nmbl').attr('id', $id + '_likes');
-				$('.nmbu').attr('id', $id + '_unlikes');
-				if (voted) reset();
-				$.ajax({
-					url: "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + $a + "&album=" + $s + "&api_key=88571316d4e244f24172ea9a9bf602fe",
-					type: "GET",
-					dataType: "xml",
-					success: function(xml) {
-						$(xml).find('album').each(function() {
-							$(this).find('image').each(function() {
-								var img = $(this).attr('size');
-								if (img == "mega")
-									if ($(this).text()) {
-										$('#imgalb').attr('src', $(this).text());
-										var imgalb2 = $(this).text();
-										jQuery('#history').prepend('<div class="collection-item avatar" id="' + $id + '"><img id="full-' + $id + '" src="' + imgalb2 + '" alt="" class="circle materialboxed"><span class="title">' + $a + '</span><p>' + $s + '</p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></div>');
-									} else {
-										$('#imgalb').attr('src', 'images/no-image.png');
-										var imgalb2 = 'images/no-image.png';
-										jQuery('#history').prepend('<div class="collection-item avatar" id="' + $id + '"><img id="full-' + $id + '" src="' + imgalb2 + '" alt="" class="circle materialboxed"><span class="title">' + $a + '</span><p>' + $s + '</p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></div>');
-									}
-							})
-						});
-					},
-					statusCode: {
-						400: function() {
-							$('#imgalb').attr('src', 'images/no-image.png');
-							var imgalb2 = 'images/no-image.png';
-							jQuery('#history').prepend('<div class="collection-item avatar" id="' + $id + '"><img id="full-' + $id + '" src="' + imgalb2 + '" alt="" class="circle materialboxed"><span class="title">' + $a + '</span><p>' + $s + '</p><a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a></div>');
-						}
-					}
-				});
-			});
-		}
-	});
-}
-
 LoadStatus();
 setInterval(function(){
 	LoadStatus();
@@ -172,8 +154,7 @@ setInterval(function(){
 
 function titleupdpage(page) {
 	if (page == 'home.html') {
-		$i = 0;
-		$id = 1;
+
 	}
 }
 var player = new Uppod({
