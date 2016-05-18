@@ -3,22 +3,6 @@ $id = 1;
 var voted = false;
 // Функция запроса куки
 
-function get_cookie(cookie_name) {
-	var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
-	if (results)
-		return (unescape(results[2]));
-	else
-		return null;
-}
-// Получаем куки
-function infoCookie(type, id, md, artist, song) {
-	if ($.cookie(md)) {
-		jQuery('#' + type + ' #' + id + ' img').attr('src', $.cookie(md));
-		jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $.cookie(md) + ')');
-	} else {
-		infoAlbum(type, id, md, artist, song);
-	};
-}
 // Тянем информацию об альбоме
 function infoAlbum(type, id, md, artist, song) {
 	var api = '88571316d4e244f24172ea9a9bf602fe';
