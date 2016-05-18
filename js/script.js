@@ -208,7 +208,7 @@ function getinfo() {
 LoadStatus();
 setInterval(function(){
 	LoadStatus();
-	$('#trace').html(window.location.pathname );
+	$('#trace').html(window.location.pathname+' '+$.cookie('TrackIdNow') );
 }, 10000);
 
 function titleupdpage(page) {
