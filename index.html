@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="css/style.css"/>
 	<script src="js/onsenui.js"></script>
     <script src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/uppod-0.6.4.js"></script>
+	<script src="js/uppod_api.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+	
 	<script src="js/script.js"></script>
   </head>
 <body>
@@ -28,25 +32,23 @@
   <ons-page>
     <ons-toolbar>
       <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
+        <ons-toolbar-button onclick="fn.open()"><ons-icon icon="md-menu"></ons-icon></ons-toolbar-button>
       </div>
-      <div class="center">
-        Main
-      </div>
+      <div class="center">Сейчас в эфире</div>
     </ons-toolbar>
     <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
       Swipe right to open the menu!
+	  <input type="button" value="Toggle" onclick="player.Toggle();"/>
+	  <div id="trace"></div>
     </p>
 	<footer>
 		<div class="wrap">
 			<div class="now"></div>
 			<div class="track">
-				<div class="song">Неизвестная песня</div>
-				<div class="artist">Неизвестный исполнитель</div>
+				<div class="song"></div>
+				<div class="artist"></div>
 			</div>
-			<div class="play"><ons-icon icon="md-play"></ons-icon></div>
+			<div class="play" onclick="streamplay();"><ons-icon icon="md-play"></ons-icon></div>
 		</div>
 	</footer>
   </ons-page>
@@ -77,6 +79,6 @@
     </ons-toolbar>
   </ons-page>
 </ons-template>
-
+<div class="player" id="stream"></div>
 </body>
 </html>
