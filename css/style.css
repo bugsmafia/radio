@@ -47,6 +47,11 @@
     font-size: 4em;
 }
 
+#playinfo {
+    text-align: center;
+    margin: 0 auto;
+}
+
 .fab{
     background-color: #3d4844;
 }

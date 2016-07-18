@@ -137,7 +137,11 @@ function infoArtist(type, id, md, artist, song) {
 					if (img == "extralarge") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
+							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
+							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
 							localStorage.setItem(md+'E', $himg);
+						} else {
+							infoArtist(type, id, md, artist, song);
 						}
 					}
 					if (img == "mega") {
