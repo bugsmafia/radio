@@ -1,3 +1,4 @@
+$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 }
@@ -396,402 +397,46 @@ MusicControls.listen();
 }); 
 $( document ).ready(function() {
 	
-$('.page__background').html('<div class="bg"><div id="vcpolygonsurface_1444343625_661661291" data-theid="vcpolygonsurface_1444343625_661661291" data-mesh-ambient="#555555" data-mesh-diffuse="#ffffff" data-mesh-width="1.2" data-mesh-height="1.2" data-mesh-depth="20" data-mesh-segments="15" data-mesh-slices="8" data-mesh-xrange="0.3" data-mesh-yrange="0.3" data-mesh-speed="0.0002" data-light-autopilot="true" data-light-ambient="#0060dd" data-light-diffuse="#ff0044" data-light-count="1" data-light-zoffset="200" data-light-speed="0.0010" class="vc-polygonsurface-background" style="display:none;"></div></div>');
-	$(function () {
-    'use strict';
-    jQuery(function ($) {
-        $.fn.vcPolygonSurface = function (Options, Callback) {
-            var CreateElement = $(this);
-            var ElementId = CreateElement.attr("id");
-            var parentRow = getParentRow(CreateElement);
-            parentRow.css("position", "relative");
-            var Element = parentRow.prepend('<div id="' + ElementId + '" class="vc-polygonsurface-background-bg"><div id="' + ElementId + '-output"></div></div>');
-
-            // Mesh Properties
-            var MESH = {
-                width: (CreateElement.attr("data-mesh-width") ? CreateElement.attr("data-mesh-width") : '1.2'),
-                height: (CreateElement.attr("data-mesh-height") ? CreateElement.attr("data-mesh-height") : '1.2'),
-                depth: (CreateElement.attr("data-mesh-depth") ? CreateElement.attr("data-mesh-depth") : '20'),
-                segments: (CreateElement.attr("data-mesh-segments") ? CreateElement.attr("data-mesh-segments") : '15'),
-                slices: (CreateElement.attr("data-mesh-slices") ? CreateElement.attr("data-mesh-slices") : '8'),
-                xRange: (CreateElement.attr("data-mesh-xrange") ? CreateElement.attr("data-mesh-xrange") : '0.3'),
-                yRange: (CreateElement.attr("data-mesh-yrange") ? CreateElement.attr("data-mesh-yrange") : '0.3'),
-                zRange: 1.0,
-                ambient: (CreateElement.attr("data-mesh-ambient") ? CreateElement.attr("data-mesh-ambient") : '#555555'),
-                diffuse: (CreateElement.attr("data-mesh-diffuse") ? CreateElement.attr("data-mesh-diffuse") : '#FFFFFF'),
-                speed: (CreateElement.attr("data-mesh-speed") ? CreateElement.attr("data-mesh-speed") : '0.0002')
-            };
-            // Light Properties
-            var LIGHT = {
-                count: (CreateElement.attr("data-light-count") ? CreateElement.attr("data-light-count") : '2'),
-                xyScalar: 1,
-                zOffset: (CreateElement.attr("data-light-zoffset") ? CreateElement.attr("data-light-zoffset") : '200'),
-                ambient: (CreateElement.attr("data-light-ambient") ? CreateElement.attr("data-light-ambient") : '#880066'),
-                diffuse: (CreateElement.attr("data-light-diffuse") ? CreateElement.attr("data-light-diffuse") : '#FF8800'),
-                speed: (CreateElement.attr("data-light-speed") ? CreateElement.attr("data-light-speed") : '0.0010'),
-                gravity: 500,
-                dampening: 0.95,
-                minLimit: 10,
-                maxLimit: null,
-                minDistance: 20,
-                maxDistance: 400,
-                autopilot: (CreateElement.attr("data-light-autopilot") == "true"),
-                draw: false,
-                bounds: FSS.Vector3.create(),
-                step: FSS.Vector3.create(
-                    Math.randomInRange(0.2, 1.0),
-                    Math.randomInRange(0.2, 1.0),
-                    Math.randomInRange(0.2, 1.0)
-                )
-            };
-            // Render Properties
-            var RENDER = {
-                renderer: 'canvas'
-            };
-            // Global Properties
-            var now, start = Date.now();
-            var center = FSS.Vector3.create();
-            var attractor = FSS.Vector3.create();
-            var container = document.getElementById(ElementId);
-            var output = document.getElementById(ElementId + '-output');
-            var renderer, scene, mesh, geometry, material;
-            var canvasRenderer;
-            var gui, autopilotController;
-            // Methods
-            function initialise() {
-                createRenderer();
-                createScene();
-                createMesh();
-                createLights();
-                addEventListeners();
-                resize(container.offsetWidth, container.offsetHeight);
-                animate();
-            }
-            function createRenderer() {
-                canvasRenderer = new FSS.CanvasRenderer();
-                setRenderer(RENDER.renderer);
-            }
-            function setRenderer(index) {
-                if (renderer) {
-                    output.removeChild(renderer.element);
-                }
-                renderer = canvasRenderer;
-                renderer.setSize(container.offsetWidth, container.offsetHeight);
-                output.appendChild(renderer.element);
-            }
-            function createScene() {
-                scene = new FSS.Scene();
-            }
-            function createMesh() {
-                scene.remove(mesh);
-                renderer.clear();
-                geometry = new FSS.Plane(MESH.width * renderer.width, MESH.height * renderer.height, MESH.segments, MESH.slices);
-                material = new FSS.Material(MESH.ambient, MESH.diffuse);
-                mesh = new FSS.Mesh(geometry, material);
-                scene.add(mesh);
-                // Augment vertices for animation
-
-                var v, vertex;
-
-                for (v = geometry.vertices.length - 1; v >= 0; v--) {
-
-                    vertex = geometry.vertices[v];
-
-                    vertex.anchor = FSS.Vector3.clone(vertex.position);
-
-                    vertex.step = FSS.Vector3.create(
-
-                        Math.randomInRange(0.2, 1.0),
-
-                        Math.randomInRange(0.2, 1.0),
-
-                        Math.randomInRange(0.2, 1.0)
-
-                    );
-
-                    vertex.time = Math.randomInRange(0, Math.PIM2);
-
-                }
-
-            }
-
-
-
-            function createLights() {
-
-                var l, light;
-
-                for (l = scene.lights.length - 1; l >= 0; l--) {
-
-                    light = scene.lights[l];
-
-                    scene.remove(light);
-
-                }
-
-                renderer.clear();
-
-                for (l = 0; l < LIGHT.count; l++) {
-                    light = new FSS.Light(LIGHT.ambient, LIGHT.diffuse);
-                    light.ambientHex = light.ambient.format();
-                    light.diffuseHex = light.diffuse.format();
-                    scene.add(light);
-                    light.mass = Math.randomInRange(0.5, 1);
-                    light.velocity = FSS.Vector3.create();
-                    light.acceleration = FSS.Vector3.create();
-                    light.force = FSS.Vector3.create();
-
-
-
-                    // Ring SVG Circle
-
-                    light.ring = document.createElementNS(FSS.SVGNS, 'circle');
-
-                    light.ring.setAttributeNS(null, 'stroke', light.ambientHex);
-
-                    light.ring.setAttributeNS(null, 'stroke-width', '0.5');
-
-                    light.ring.setAttributeNS(null, 'fill', 'none');
-
-                    light.ring.setAttributeNS(null, 'r', '10');
-
-
-
-                    // Core SVG Circle
-
-                    light.core = document.createElementNS(FSS.SVGNS, 'circle');
-
-                    light.core.setAttributeNS(null, 'fill', light.diffuseHex);
-
-                    light.core.setAttributeNS(null, 'r', '4');
-
-                }
-
-            }
-
-
-
-            function resize(width, height) {
-
-                renderer.setSize(width, height);
-
-                FSS.Vector3.set(center, renderer.halfWidth, renderer.halfHeight);
-
-                createMesh();
-
-            }
-
-
-
-            function animate() {
-
-                now = Date.now() - start;
-
-                update();
-
-                render();
-
-                requestAnimationFrame(animate);
-
-            }
-
-
-
-            function update() {
-
-                var ox, oy, oz, l, light, v, vertex, offset = MESH.depth / 2;
-
-
-
-                // Update Bounds
-
-                FSS.Vector3.copy(LIGHT.bounds, center);
-
-                FSS.Vector3.multiplyScalar(LIGHT.bounds, LIGHT.xyScalar);
-
-
-
-                // Update Attractor
-
-                FSS.Vector3.setZ(attractor, LIGHT.zOffset);
-
-
-
-                // Overwrite the Attractor position
-
-                if (LIGHT.autopilot) {
-
-                    ox = Math.sin(LIGHT.step[0] * now * LIGHT.speed);
-
-                    oy = Math.cos(LIGHT.step[1] * now * LIGHT.speed);
-
-                    FSS.Vector3.set(attractor,
-
-                        LIGHT.bounds[0] * ox,
-
-                        LIGHT.bounds[1] * oy,
-
-                        LIGHT.zOffset);
-
-                }
-
-
-
-                // Animate Lights
-
-                for (l = scene.lights.length - 1; l >= 0; l--) {
-
-                    light = scene.lights[l];
-
-
-
-                    // Reset the z position of the light
-
-                    FSS.Vector3.setZ(light.position, LIGHT.zOffset);
-
-
-
-                    // Calculate the force Luke!
-
-                    var D = Math.clamp(FSS.Vector3.distanceSquared(light.position, attractor), LIGHT.minDistance, LIGHT.maxDistance);
-
-                    var F = LIGHT.gravity * light.mass / D;
-
-                    FSS.Vector3.subtractVectors(light.force, attractor, light.position);
-
-                    FSS.Vector3.normalise(light.force);
-
-                    FSS.Vector3.multiplyScalar(light.force, F);
-
-
-
-                    // Update the light position
-
-                    FSS.Vector3.set(light.acceleration);
-
-                    FSS.Vector3.add(light.acceleration, light.force);
-
-                    FSS.Vector3.add(light.velocity, light.acceleration);
-
-                    FSS.Vector3.multiplyScalar(light.velocity, LIGHT.dampening);
-
-                    FSS.Vector3.limit(light.velocity, LIGHT.minLimit, LIGHT.maxLimit);
-
-                    FSS.Vector3.add(light.position, light.velocity);
-
-                }
-
-
-
-                // Animate Vertices
-
-                for (v = geometry.vertices.length - 1; v >= 0; v--) {
-
-                    vertex = geometry.vertices[v];
-
-                    ox = Math.sin(vertex.time + vertex.step[0] * now * MESH.speed);
-
-                    oy = Math.cos(vertex.time + vertex.step[1] * now * MESH.speed);
-
-                    oz = Math.sin(vertex.time + vertex.step[2] * now * MESH.speed);
-
-                    FSS.Vector3.set(vertex.position,
-
-                        MESH.xRange * geometry.segmentWidth * ox,
-
-                        MESH.yRange * geometry.sliceHeight * oy,
-
-                        MESH.zRange * offset * oz - offset);
-
-                    FSS.Vector3.add(vertex.position, vertex.anchor);
-
-                }
-                geometry.dirty = true;
-
-            }
-
-
-
-            function render() {
-
-                renderer.render(scene);
-
-
-
-                // Draw Lights
-
-                if (LIGHT.draw) {
-
-                    var l, lx, ly, light;
-
-                    for (l = scene.lights.length - 1; l >= 0; l--) {
-
-                        light = scene.lights[l];
-
-                        lx = light.position[0];
-
-                        ly = light.position[1];
-
-                        renderer.context.lineWidth = 0.5;
-                        renderer.context.beginPath();
-                        renderer.context.arc(lx, ly, 10, 0, Math.PIM2);
-                        renderer.context.strokeStyle = light.ambientHex;
-                        renderer.context.stroke();
-                        renderer.context.beginPath();
-                        renderer.context.arc(lx, ly, 4, 0, Math.PIM2);
-                        renderer.context.fillStyle = light.diffuseHex;
-                        renderer.context.fill();
-                    }
-                }
-            }
-
-            function addEventListeners() {
-
-                window.addEventListener('resize', onWindowResize);
-
-                //container.addEventListener('mousemove', onMouseMove);
-
-            }
-            function onMouseMove(event) {
-
-                FSS.Vector3.set(attractor, event.x, renderer.height - event.y);
-
-                FSS.Vector3.subtract(attractor, center);
-
-            }
-            function onWindowResize(event) {
-
-                resize(container.offsetWidth, container.offsetHeight);
-
-                render();
-
-            }
-            initialise();
-            CreateElement.remove();
-            function getParentRow(Element) {
-                return Element.parent().eq(0);
-            }
-
+	$( document ).ready(function() {
+    var colors = new Array(
+      [230,105,147],
+      [58,164,178],
+      [40,26,88],
+      [232,24,122]);
+
+    var step = 0;
+    var colorIndices = [0,1,2,3];
+    var gradientSpeed = 0.002;
+
+    function updateGradient() {
+      var c0_0 = colors[colorIndices[0]];
+      var c0_1 = colors[colorIndices[1]];
+      var c1_0 = colors[colorIndices[2]];
+      var c1_1 = colors[colorIndices[3]];
+
+      var istep = 1 - step;
+      var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+      var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+      var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+      var color1 = "#"+((r1 << 16) | (g1 << 8) | b1).toString(16);
+
+      var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+      var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+      var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+      var color2 = "#"+((r2 << 16) | (g2 << 8) | b2).toString(16);
+
+        $('#gradient').css({background: "-webkit-radial-gradient(80% 10%, circle, "+color1+", transparent), -webkit-radial-gradient(80% 50%, circle, "+color2+", transparent)"});
+        
+        step += gradientSpeed;
+        if ( step >= 1 )
+        {
+          step %= 1;
+          colorIndices[0] = colorIndices[1];
+          colorIndices[2] = colorIndices[3];
+          colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+          colorIndices[3] = ( colorIndices[3] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
+          
         }
-        $(".vc-polygonsurface-background")
-            .each(function () {
-                $(this).vcPolygonSurface();
-            });
-    });
-
-    $(window)
-        .resize(Resize);
-
-    function Resize() {
-        $(".bg")
-            .height($(window)
-                .height());
-        $(".startmessage ")
-            .css("padding-top", ($(window)
-                .height() / 2 - 200) + "px");
-    }
-
-    Resize();
-
-
+    } setInterval(updateGradient,10);
+});
 });
