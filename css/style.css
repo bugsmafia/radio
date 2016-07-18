@@ -50,6 +50,9 @@
 #playinfo {
     text-align: center;
     margin: 0 auto;
+    margin: auto;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 .fab{

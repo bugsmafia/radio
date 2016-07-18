@@ -71,17 +71,15 @@ function infoAlbum(type, id, md, artist, song) {
 					};
 					if (img == "large") {
 						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
-							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
+							$himg = jQuery(this).text();							
 							localStorage.setItem(md+'L', $himg);
-						} else {
-							infoArtist(type, id, md, artist, song);
 						}
 					};
 					if (img == "extralarge") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
+							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
+							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
 							localStorage.setItem(md+'E', $himg);
 						}
 					}
@@ -89,6 +87,8 @@ function infoAlbum(type, id, md, artist, song) {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
 							localStorage.setItem(md+'M', $himg);
+						} else {
+							infoArtist(type, id, md, artist, song);
 						}
 					}
 				})
@@ -127,12 +127,8 @@ function infoArtist(type, id, md, artist, song) {
 					if (img == "large") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
-							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
 							localStorage.setItem(md+'L', $himg);
-						} else {
-							infoArtist(type, id, md, artist, song);
-						}
+						};
 					};
 					if (img == "extralarge") {
 						if (jQuery(this).text()) {
