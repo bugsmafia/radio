@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="radio.player" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="radio.player" version="3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Radio 13</name>
   <description>
     На Радио13 мы объединили лучшие вкусы, которые формировались в 1990-е и 2000-е годы. Radio13 - это станция, где звучат только хиты. Мы предоставляем лучший микс из зарубежных и Российских исполнителей музыки. Приглашаем в нашу компанию всех, для кого жизнь прекрасна и удивительна!
@@ -9,7 +9,8 @@
   </author>
   <content src="index.html" />
   <!-- <content src="http://localhost/index.html" /> -->
-  <preference name="xwalkVersion" value="13" />
+   <preference name="xwalkVersion" value="13" />
+  <preference name="android-build-tool" value="gradle" /> 
   <preference name="android-installLocation" value="auto" />
   <plugin name="cordova-plugin-whitelist" version="1" />
   <access origin="*" />
@@ -43,4 +44,16 @@
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
 	<icon src="150.png"  width="150" height="150" />
+	
+<plugin spec="https://github.com/bugsmafia/cordova-plugin-stream-aac.git" source="git" />
+<plugin spec="https://github.com/apache/cordova-plugin-statusbar.git" source="git" />
+<preference name="StatusBarOverlaysWebView" value="true" />
+<preference name="StatusBarBackgroundColor" value="#444444" />
+<preference name="StatusBarStyle" value="lightcontent" />
+<plugin spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" source="git" />
+<plugin spec="https://github.com/apache/cordova-plugin-splashscreen.git" source="git" />
+<plugin spec="https://github.com/renanoliveira/cordova-phone-call-trap.git" source="git" /> 
+<plugin spec="https://github.com/homerours/cordova-music-controls-plugin.git" source="git" />
+<plugin spec="https://github.com/hazems/cordova-sms-plugin.git" source="git" />  
+<plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" /> 
 </widget>
