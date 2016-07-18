@@ -44,7 +44,7 @@ function modals(name) {
 } 
 
 
-var streamChanel = "http://plau.radio13.ru/aac";
+var streamChanel = "http://play.radio13.ru/aac";
 
 // Тянем информацию об альбоме
 function infoAlbum(type, id, md, artist, song) {
@@ -272,7 +272,7 @@ setInterval(function(){
 	LoadStream();
 	function LoadStream() {
 		setTimeout(function() {
-			$my_media = new PlayStream(localStorage.streamChanel, function (status){
+			$my_media = new PlayStream(streamChanel, function (status){
 					console.log("status - "+status);
 					if(status === PlayStream.MEDIA_STOPPED){
 						console.log('stopped');

@@ -38,12 +38,13 @@
   -webkit-radial-gradient(10% 10%, circle, rgb(68,242,215), transparent);
 }
 #play {
-    color: #bbaeae;
+    color: #fff;
     width: 3em;
-    height: 3em;
+    /* height: 1em; */
     position: relative;
     margin: 0 auto;
     text-align: center;
+    font-size: 4em;
 }
 
 .fab{
@@ -131,12 +132,12 @@ footer .play {
 }
 
 .artist {
-    color: #35403c;
+	color: #fff;
     font-size: 0.85em;
 	text-align: center;
 }
 .song {
-	color: #35403c;
+	color: #fff;
     font-size: 1.1em;
     margin-top: 0.15em;
     margin-bottom: 0.2em;
