@@ -13,7 +13,7 @@
     background-image: inherit;
     background-position: inherit;
     background-size: inherit;
-	z-index: 0;
+    z-index: -1;
 }
 #gradient {
   position: absolute;
@@ -31,7 +31,11 @@
   padding: 0px;
   margin: 0px;
   z-index: 3;
-  background-image: -webkit-radial-gradient(80% 10%, circle, rgb(27,186,135), transparent),  -webkit-radial-gradient(80% 50%, circle, rgb(58,164,178), transparent),  -webkit-radial-gradient(20% 80%, 40em 40em, rgb(14,4,56), transparent),  -webkit-radial-gradient(10% 10%, circle, rgb(68,242,215), transparent);
+  background-image: 
+  -webkit-radial-gradient(80% 10%, circle, rgb(255, 152, 0), transparent),
+  -webkit-radial-gradient(80% 50%, circle, rgb(239, 227, 210), transparent),
+  -webkit-radial-gradient(20% 80%, 40em 40em, rgb(14,4,56), transparent),
+  -webkit-radial-gradient(10% 10%, circle, rgb(68,242,215), transparent);
 }
 #play {
     color: #bbaeae;
