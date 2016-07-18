@@ -1,6 +1,7 @@
-$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
+
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
+	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 }
 
 function onDeviceReady() {
@@ -394,10 +395,8 @@ function events(action) {
 MusicControls.subscribe(events);
 MusicControls.listen();
 
-}); 
-$( document ).ready(function() {
-	
-	$( document ).ready(function() {
+
+
     var colors = new Array(
       [230,105,147],
       [58,164,178],
@@ -438,5 +437,5 @@ $( document ).ready(function() {
           
         }
     } setInterval(updateGradient,10);
-});
-});
+
+}); 

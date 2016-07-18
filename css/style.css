@@ -13,6 +13,7 @@
     background-image: inherit;
     background-position: inherit;
     background-size: inherit;
+	z-index: 0;
 }
 #gradient {
   position: absolute;
