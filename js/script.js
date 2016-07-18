@@ -180,7 +180,7 @@ function UpdateStatus(now) {
 			}, 2000);
 			localStorage.setItem('TrackIdNow', data.id);
 			infoAlbum('playinfo', 'playinfoimg', 'TrackIdNowImg', data.a, data.s);
-		});
+		}); 
 	}
 }
 
