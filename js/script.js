@@ -101,7 +101,7 @@ function infoAlbum(type, id, md, artist, song) {
 		}
 	});
 }
-// Тянем информацию об артисте
+// Тянем информацию об артисте 
 function infoArtist(type, id, md, artist, song) {
 	var api = '88571316d4e244f24172ea9a9bf602fe';
 	jQuery.ajax({
