@@ -55,12 +55,15 @@
     display: table-cell;
 }
 
-.fab{
-    background-color: #3d4844;
+.fab {
+    background-color: inherit;
+    color: #333;
+    box-shadow: inherit;
+	-webkit-box-shadow: inherit;
 }
 .fab:active {
-    -webkit-box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
-    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
+    box-shadow: inherit;
+	-webkit-box-shadow: inherit;
     background-color: #f1f1f1;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
