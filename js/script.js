@@ -99,28 +99,28 @@ function infoAlbum(type, id, md, artist, song) {
 			});
 			
 			var ImgCashSmall = ContentSync.sync({
-					src: TrackIdNowImgSmall,
-					id: 'small/'+getPageName(url),
+					src: localStorage.TrackIdNowImgSmall,
+					id: 'small/'+getPageName(localStorage.TrackIdNowImgSmall),
 					type: 'local'
 			});
 			var ImgCashMedium = ContentSync.sync({
-					src: TrackIdNowImgMedium,
-					id: 'medium/'+getPageName(url),
+					src: localStorage.TrackIdNowImgMedium,
+					id: 'medium/'+getPageName(localStorage.TrackIdNowImgMedium),
 					type: 'local'
 			});
 			var ImgCashLarge = ContentSync.sync({
-					src: TrackIdNowImgLarge,
-					id: 'large/'+getPageName(url),
+					src: localStorage.TrackIdNowImgLarge,
+					id: 'large/'+getPageName(localStorage.TrackIdNowImgLarge),
 					type: 'local'
 			});
 			var ImgCashExtralarge = ContentSync.sync({
-					src: TrackIdNowImgExtralarge,
-					id: 'extralarge/'+getPageName(url),
+					src: localStorage.TrackIdNowImgExtralarge,
+					id: 'extralarge/'+getPageName(localStorage.TrackIdNowImgExtralarge),
 					type: 'local'
 			});
 			var ImgCashMega = ContentSync.sync({
-					src: TrackIdNowImgMega,
-					id: 'mega/'+getPageName(url),
+					src: localStorage.TrackIdNowImgMega,
+					id: 'mega/'+getPageName(localStorage.TrackIdNowImgMega),
 					type: 'local'
 			});
 			
@@ -202,28 +202,28 @@ function infoArtist(type, id, md, artist, song) {
 			});
 			
 			var ImgCashSmall = ContentSync.sync({
-					src: TrackIdNowImgSmall,
-					id: 'small/'+getPageName(url),
+					src: localStorage.TrackIdNowImgSmall,
+					id: 'small/'+getPageName(localStorage.TrackIdNowImgSmall),
 					type: 'local'
 			});
 			var ImgCashMedium = ContentSync.sync({
-					src: TrackIdNowImgMedium,
-					id: 'medium/'+getPageName(url),
+					src: localStorage.TrackIdNowImgMedium,
+					id: 'medium/'+getPageName(localStorage.TrackIdNowImgMedium),
 					type: 'local'
 			});
 			var ImgCashLarge = ContentSync.sync({
-					src: TrackIdNowImgLarge,
-					id: 'large/'+getPageName(url),
+					src: localStorage.TrackIdNowImgLarge,
+					id: 'large/'+getPageName(localStorage.TrackIdNowImgLarge),
 					type: 'local'
 			});
 			var ImgCashExtralarge = ContentSync.sync({
-					src: TrackIdNowImgExtralarge,
-					id: 'extralarge/'+getPageName(url),
+					src: localStorage.TrackIdNowImgExtralarge,
+					id: 'extralarge/'+getPageName(localStorage.TrackIdNowImgExtralarge),
 					type: 'local'
 			});
 			var ImgCashMega = ContentSync.sync({
-					src: TrackIdNowImgMega,
-					id: 'mega/'+getPageName(url),
+					src: localStorage.TrackIdNowImgMega,
+					id: 'mega/'+getPageName(localStorage.TrackIdNowImgMega),
 					type: 'local'
 			});
 			
