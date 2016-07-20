@@ -130,6 +130,9 @@ function infoAlbum(type, id, md, artist, song) {
 			ImgCashMedium.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
+				if(data.localPath){
+					statusBar(data.localPath);
+				}
 			});
 			ImgCashLarge.on('complete', function(data) {
 				console.log(data.localPath);
@@ -140,6 +143,7 @@ function infoAlbum(type, id, md, artist, song) {
 				console.log(data.cached);
 				if(data.localPath){
 					jQuery('#' + type + ' #' + id + ' img').attr('src', data.localPath);
+					
 				}
 				
 			});
@@ -235,6 +239,9 @@ function infoArtist(type, id, md, artist, song) {
 			ImgCashMedium.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
+				if(data.localPath){
+					statusBar(data.localPath);
+				}
 			});
 			ImgCashLarge.on('complete', function(data) {
 				console.log(data.localPath);
@@ -279,7 +286,6 @@ function UpdateStatus(now) {
 				// Обновляет куки
 				localStorage.setItem('NowSong', data.s);
 				localStorage.setItem('NowArtist', data.a);
-				statusBar();
 			}, 2000);
 			localStorage.setItem('TrackIdNow', data.id);
 			infoAlbum('playinfo', 'playinfoimg', 'TrackIdNowImg', data.a, data.s);
@@ -288,16 +294,16 @@ function UpdateStatus(now) {
 }
 
 var Playing = false;
-function statusBar(){
+function statusBar(img){
 	if(streamer == "1"){
 		Playing = false;
-	} else {
+	} else { 
 		Playing = true;
 	};
 	MusicControls.create({
 		track: localStorage.NowSong,
 		artist: localStorage.NowArtist,
-		cover: localStorage.TrackIdNowImgExtralarge,
+		cover: img,
 		isPlaying: Playing,
 		
 		dismissable : true,
