@@ -1,4 +1,8 @@
-
+function getPageName(url) {
+    var index = url.lastIndexOf("/") + 1;
+    var filenameWithExtension = url.substr(index);
+    return filenameWithExtension;
+}
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
@@ -60,19 +64,19 @@ function infoAlbum(type, id, md, artist, song) {
 					if (img == "small") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'S', $himg);
+							localStorage.setItem(md+'Small', $himg);
 						}
 					};
 					if (img == "medium") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'M', $himg);
+							localStorage.setItem(md+'Medium', $himg);
 						}
 					};
 					if (img == "large") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();							
-							localStorage.setItem(md+'L', $himg);
+							localStorage.setItem(md+'Large', $himg);
 						}
 					};
 					if (img == "extralarge") {
@@ -80,19 +84,67 @@ function infoAlbum(type, id, md, artist, song) {
 							$himg = jQuery(this).text();
 							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
 							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
-							localStorage.setItem(md+'E', $himg);
+							localStorage.setItem(md+'Extralarge', $himg);
 						}
 					}
 					if (img == "mega") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'M', $himg);
+							localStorage.setItem(md+'Mega', $himg);
 						} else {
 							infoArtist(type, id, md, artist, song);
 						}
 					}
 				})
 			});
+			
+			var ImgCashSmall = ContentSync.sync({
+					src: TrackIdNowImgSmall,
+					id: 'small/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashMedium = ContentSync.sync({
+					src: TrackIdNowImgMedium,
+					id: 'medium/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashLarge = ContentSync.sync({
+					src: TrackIdNowImgLarge,
+					id: 'large/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashExtralarge = ContentSync.sync({
+					src: TrackIdNowImgExtralarge,
+					id: 'extralarge/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashMega = ContentSync.sync({
+					src: TrackIdNowImgMega,
+					id: 'mega/'+getPageName(url),
+					type: 'local'
+			});
+			
+			ImgCashSmall.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashMedium.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashLarge.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashExtralarge.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashMega.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			
 		},
 		statusCode: {
 			400: function() {
@@ -115,19 +167,19 @@ function infoArtist(type, id, md, artist, song) {
 					if (img == "small") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'S', $himg);
+							localStorage.setItem(md+'Small', $himg);
 						}
 					};
 					if (img == "medium") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'M', $himg);
+							localStorage.setItem(md+'Medium', $himg);
 						}
 					};
 					if (img == "large") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'L', $himg);
+							localStorage.setItem(md+'Large', $himg);
 						};
 					};
 					if (img == "extralarge") {
@@ -135,7 +187,7 @@ function infoArtist(type, id, md, artist, song) {
 							$himg = jQuery(this).text();
 							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
 							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
-							localStorage.setItem(md+'E', $himg);
+							localStorage.setItem(md+'Extralarge', $himg);
 						} else {
 							infoArtist(type, id, md, artist, song);
 						}
@@ -143,10 +195,57 @@ function infoArtist(type, id, md, artist, song) {
 					if (img == "mega") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							localStorage.setItem(md+'M', $himg);
+							localStorage.setItem(md+'Mega', $himg);
 						}
 					}
 				})
+			});
+			
+			var ImgCashSmall = ContentSync.sync({
+					src: TrackIdNowImgSmall,
+					id: 'small/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashMedium = ContentSync.sync({
+					src: TrackIdNowImgMedium,
+					id: 'medium/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashLarge = ContentSync.sync({
+					src: TrackIdNowImgLarge,
+					id: 'large/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashExtralarge = ContentSync.sync({
+					src: TrackIdNowImgExtralarge,
+					id: 'extralarge/'+getPageName(url),
+					type: 'local'
+			});
+			var ImgCashMega = ContentSync.sync({
+					src: TrackIdNowImgMega,
+					id: 'mega/'+getPageName(url),
+					type: 'local'
+			});
+			
+			ImgCashSmall.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashMedium.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashLarge.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashExtralarge.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
+			});
+			ImgCashMega.on('complete', function(data) {
+				console.log(data.localPath);
+				console.log(data.cached);
 			});
 		},
 		statusCode: {
@@ -194,7 +293,7 @@ function statusBar(){
 	MusicControls.create({
 		track: localStorage.NowSong,
 		artist: localStorage.NowArtist,
-		cover: localStorage.TrackIdNowImgE,
+		cover: localStorage.TrackIdNowImgExtralarge,
 		isPlaying: Playing,
 		
 		dismissable : true,
@@ -214,7 +313,7 @@ function ShareTrack() {
 	var ShareData = {
 		message: 'На "Радио13" сейчас играет: '+localStorage.NowSong+' '+localStorage.NowArtist,
 		subject: 'Мне нравится!',
-		files: [localStorage.TrackIdNowImgM],
+		files: [localStorage.TrackIdNowImgMega],
 		url: 'https://radio13.ru',
 		chooserTitle: 'Поделись треком!'
 	}
