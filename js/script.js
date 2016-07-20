@@ -82,8 +82,7 @@ function infoAlbum(type, id, md, artist, song) {
 					if (img == "extralarge") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
-							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
+							
 							localStorage.setItem(md+'Extralarge', $himg);
 						}
 					}
@@ -139,6 +138,10 @@ function infoAlbum(type, id, md, artist, song) {
 			ImgCashExtralarge.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
+				if(data.localPath){
+					jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
+				}
+				
 			});
 			ImgCashMega.on('complete', function(data) {
 				console.log(data.localPath);
@@ -185,8 +188,6 @@ function infoArtist(type, id, md, artist, song) {
 					if (img == "extralarge") {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
-							jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
-							jQuery('#' + type + ' #' + id + ' .alb').css('background-image', 'url(' + $himg + ')');
 							localStorage.setItem(md+'Extralarge', $himg);
 						} else {
 							infoArtist(type, id, md, artist, song);
@@ -242,6 +243,9 @@ function infoArtist(type, id, md, artist, song) {
 			ImgCashExtralarge.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
+				if(data.localPath){
+					jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
+				}
 			});
 			ImgCashMega.on('complete', function(data) {
 				console.log(data.localPath);
