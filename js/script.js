@@ -139,7 +139,7 @@ function infoAlbum(type, id, md, artist, song) {
 				console.log(data.localPath);
 				console.log(data.cached);
 				if(data.localPath){
-					jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
+					jQuery('#' + type + ' #' + id + ' img').attr('src', data.localPath);
 				}
 				
 			});
@@ -244,7 +244,7 @@ function infoArtist(type, id, md, artist, song) {
 				console.log(data.localPath);
 				console.log(data.cached);
 				if(data.localPath){
-					jQuery('#' + type + ' #' + id + ' img').attr('src', jQuery(this).text());
+					jQuery('#' + type + ' #' + id + ' img').attr('src', data.localPath);
 				}
 			});
 			ImgCashMega.on('complete', function(data) {
