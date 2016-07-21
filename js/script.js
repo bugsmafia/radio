@@ -130,13 +130,13 @@ function infoAlbum(type, id, md, artist, song) {
 			ImgCashMedium.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
-				if(data.localPath){
-					statusBar(data.localPath);
-				}
 			});
 			ImgCashLarge.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
+				if(data.localPath){
+					statusBar(data.localPath);
+				}
 			});
 			ImgCashExtralarge.on('complete', function(data) {
 				console.log(data.localPath);
@@ -239,13 +239,14 @@ function infoArtist(type, id, md, artist, song) {
 			ImgCashMedium.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
-				if(data.localPath){
-					statusBar(data.localPath);
-				}
+				
 			});
 			ImgCashLarge.on('complete', function(data) {
 				console.log(data.localPath);
 				console.log(data.cached);
+				if(data.localPath){
+					statusBar(data.localPath);
+				}
 			});
 			ImgCashExtralarge.on('complete', function(data) {
 				console.log(data.localPath);
