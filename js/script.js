@@ -375,15 +375,19 @@ function ShareTrack() {
 		if (streamer == "1") {
 			$my_media.play();
 			OneclickPlay = 1;
+			OneclickStop = 2;
 		} else if (streamer == "2") {
 			$my_media.stop();
 			OneclickPlay = 2;
+			OneclickStop = 1;
 		} else if (streamer == "3") {
 			$my_media.stop();
 			OneclickPlay = 2;
+			OneclickStop = 1;
 		} else if (streamer == "4") {
 			$my_media.play();
 			OneclickPlay = 1;
+			OneclickStop = 2;
 		};
 	}
     
@@ -505,6 +509,7 @@ function events(action) {
         case 'music-controls-pause':
             console.log('Пауза');
 			$my_media.stop();
+			OneclickPlay = 1;
             break;
         case 'music-controls-play':
             console.log('Плей');
@@ -514,6 +519,7 @@ function events(action) {
         case 'music-controls-destroy':
             console.log('Удалено');
 			$my_media.stop();
+			OneclickPlay = 1;
             break;
 
         // Headset events (Android only)
