@@ -18,6 +18,7 @@ function onDeviceReady() {
 // Функция при нажатии кнопки НАЗАД
 function onBackKeyDown() {
 	$my_media.stop();
+	OneclickPlay = 2;
 	ons.notification.confirm('Закрыть радио?').then(
 		function(answer) {
 		  if (answer === 1) {
@@ -370,16 +371,19 @@ function ShareTrack() {
 	var OneclickStop = 1;
 	// Функция кнопки ПЛЕЙ основной
 	function streamplay() {
-		OneclickPlay = 2;
 		
 		if (streamer == "1") {
 			$my_media.play();
+			OneclickPlay = 1;
 		} else if (streamer == "2") {
 			$my_media.stop();
+			OneclickPlay = 2;
 		} else if (streamer == "3") {
 			$my_media.stop();
+			OneclickPlay = 2;
 		} else if (streamer == "4") {
 			$my_media.play();
+			OneclickPlay = 1;
 		};
 	}
     
@@ -487,6 +491,7 @@ function streamRePlay(){
 	};	
 }
 // Sharing
+console.log(OneclickPlay+' '+OneclickStop+' '+navigator.connection.type);
 
 ons.ready(function() {
 function events(action) {
