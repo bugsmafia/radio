@@ -47,7 +47,7 @@ function modals(name) {
 } 
 
 // Канал трансляции
-var streamChanel = "http://play.radio13.ru/aac";
+var streamChanel = "http://play.radio13.ru/64";
 
 // Тянем информацию об альбоме
 function infoAlbum(type, id, md, artist, song) {
