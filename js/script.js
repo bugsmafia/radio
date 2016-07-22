@@ -463,7 +463,18 @@ setInterval(function(){
 		}, 2000);
 	}
 
-
+function streamRePlay(){
+if (streamer == "1" && callmemabe == '2' && OneclickPlay == "2") {
+	console.log("Восстанавливаем стрим после разрыва связи через 3 секунды");
+	setTimeout(function() {
+		console.log("Восстанавливаем стрим");
+		$('#play i').attr('class', 'zmdi zmdi-play');
+		$('#play').addClass('active');
+		$my_media.play();
+	}, 3000);
+};
+	
+}
 // Sharing
 
 ons.ready(function() {
