@@ -278,7 +278,6 @@ LoadStatus();
 setInterval(function(){
 	LoadStatus();
 	$('#trace').html(window.location.pathname+' '+localStorage.TrackIdNow);	
-	checkConnection();
 }, 15000);
 
 // Обновляем статус эфира
@@ -490,6 +489,7 @@ function streamRePlayGO(){
 	}, 3000);
 };
 function streamRePlay(){
+	console.log(OneclickPlay+' '+OneclickStop+' '+navigator.connection.type);
 	if(navigator.connection.type != 'none' && streamer == "1" && OneclickStop == "2"){
 		streamRePlayGO();
 	};	
@@ -498,7 +498,7 @@ setInterval(function(){
 	streamRePlay()
 }, 3000);
 // Sharing
-console.log(OneclickPlay+' '+OneclickStop+' '+navigator.connection.type);
+
  
 ons.ready(function() {
 function events(action) {
