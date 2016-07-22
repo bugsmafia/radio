@@ -3,18 +3,19 @@ function getPageName(url) {
     var filenameWithExtension = url.substr(index);
     return filenameWithExtension;
 }
+// Функция выполнения кода при загрузки приложения
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 }
-
+// Функция исполнения когда приложение готово
 function onDeviceReady() {
     document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
 	document.addEventListener("backbutton", onBackKeyDown, false);
 }
 
-
+// Функция при нажатии кнопки НАЗАД
 function onBackKeyDown() {
 	$my_media.stop();
 	ons.notification.confirm('Закрыть радио?').then(
@@ -25,14 +26,11 @@ function onBackKeyDown() {
 		}
 	);
 }
-function onPause() {
-	
-}
-
-function onResume() {
-
-} 
-
+// Функция при сворачивании приложения
+function onPause() {}
+// Функция при восстановлении приложения
+function onResume() {} 
+// Вызов модальных окон
 function modals(name) {
 	switch (name) {
 		case "config":
@@ -47,7 +45,7 @@ function modals(name) {
 	};
 } 
 
-
+// Канал трансляции
 var streamChanel = "http://play.radio13.ru/aac";
 
 // Тянем информацию об альбоме
@@ -272,6 +270,16 @@ function LoadStatus() {
 		UpdateStatus(data.i);
 	});
 }
+// Устанавливаем первоначальное значение куки о треке
+localStorage.setItem('TrackIdNow', '');
+LoadStatus();
+// Каждые 15 секунд запрашиваем статус эфира
+setInterval(function(){
+	LoadStatus();
+	$('#trace').html(window.location.pathname+' '+localStorage.TrackIdNow);	
+	checkConnection();
+}, 15000);
+
 // Обновляем статус эфира
 function UpdateStatus(now) {
 	if (localStorage.TrackIdNow == now) {} else {
@@ -294,7 +302,9 @@ function UpdateStatus(now) {
 	}
 }
 
+// Статус, играет или нет.
 var Playing = false;
+// Вывод статус бара в шторку с инфой трека и обложкой
 function statusBar(img){
 	if(streamer == "1"){
 		Playing = false;
@@ -310,8 +320,7 @@ function statusBar(img){
 		dismissable : true,
 		hasPrev: false,
 		hasNext: false,
-		hasClose: false, 
-		ticker: 'Now playing "Time is Running Out"'
+		hasClose: false
 	}, onSuccess, onError);
 }
 
@@ -319,6 +328,8 @@ var onSuccess = function(result) {
 	cancelled (result.completed=false)
 }
 var onError = function(msg) {}
+
+// Шарим треки
 function ShareTrack() {
 	modals('share');
 	var ShareData = {
@@ -340,15 +351,7 @@ function ShareTrack() {
 }
 
 
-// Устанавливаем первоначальное значение куки о треке
-localStorage.setItem('TrackIdNow', '');
-LoadStatus();
-setInterval(function(){
-	LoadStatus();
-	$('#trace').html(window.location.pathname+' '+localStorage.TrackIdNow);
-	
-	checkConnection();
-}, 15000);
+
 
 
 
@@ -364,6 +367,8 @@ setInterval(function(){
 	
 	var streamer = 1;
 	var OneclickPlay = 1;
+	var OneclickStop = 1;
+	// Функция кнопки ПЛЕЙ основной
 	function streamplay() {
 		OneclickPlay = 2;
 		
@@ -421,11 +426,13 @@ setInterval(function(){
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
+							OneclickStop = 2;
 						} else if (streamer == "3") {
 
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
+							OneclickStop = 2;
 						}
 						callmemabe = '2';
 
@@ -436,11 +443,13 @@ setInterval(function(){
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
+							OneclickStop = 2;
 						} else if (streamer == "3") {
 
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
+							OneclickStop = 2;
 						}
 						callmemabe = '2';
 						break;
@@ -454,6 +463,7 @@ setInterval(function(){
 								$('#play i').attr('class', 'zmdi zmdi-play');
 								$('#play').addClass('active');
 								$my_media.play();
+								OneclickStop = 1;
 							}, 3000);
 						};
 						break;
@@ -463,9 +473,7 @@ setInterval(function(){
 		}, 2000);
 	}
 
-function streamRePlay(){
-if (streamer == "1" && callmemabe == '2' && OneclickPlay == "2") {
-	console.log("Восстанавливаем стрим после разрыва связи через 3 секунды");
+function streamRePlayGO(){
 	setTimeout(function() {
 		console.log("Восстанавливаем стрим");
 		$('#play i').attr('class', 'zmdi zmdi-play');
@@ -473,7 +481,10 @@ if (streamer == "1" && callmemabe == '2' && OneclickPlay == "2") {
 		$my_media.play();
 	}, 3000);
 };
-	
+function streamRePlay(){
+	if(navigator.connection.type != 'none' && OneclickPlay == "2" && OneclickStop == "1"){
+		streamRePlayGO();
+	};	
 }
 // Sharing
 
@@ -493,6 +504,7 @@ function events(action) {
         case 'music-controls-play':
             console.log('Плей');
 			$my_media.play();
+			OneclickPlay = 2;
             break;
         case 'music-controls-destroy':
             console.log('Удалено');
