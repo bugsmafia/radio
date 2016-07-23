@@ -58,4 +58,6 @@
 <plugin spec="https://github.com/phonegap/phonegap-plugin-contentsync.git" source="git" />
 
 <plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" />
+
+<plugin spec="https://github.com/mgcrea/cordova-plugin-volume-control.git" source="git" />
 </widget>
