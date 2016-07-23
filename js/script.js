@@ -372,21 +372,25 @@ function ShareTrack() {
 	function streamplay() {
 		
 		if (streamer == "1") {
+			OneclickStop = 2;
 			$my_media.play();
 
-			OneclickStop = 2;
+			
 		} else if (streamer == "2") {
+			OneclickStop = 3;
 			$my_media.stop();
 
-			OneclickStop = 1;
+			
 		} else if (streamer == "3") {
-			$my_media.stop();
 			OneclickPlay = 2;
-			OneclickStop = 1;
+			OneclickStop = 3;
+			$my_media.stop();
+			
 		} else if (streamer == "4") {
+			OneclickStop = 2;
 			$my_media.play();
 
-			OneclickStop = 2;
+			
 		};
 	}
     
@@ -433,13 +437,13 @@ function ShareTrack() {
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
-							OneclickStop = 2;
+							OneclickStop = 3;
 						} else if (streamer == "3") {
 
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
-							OneclickStop = 2;
+							OneclickStop = 3;
 						}
 						callmemabe = '2';
 
@@ -450,13 +454,13 @@ function ShareTrack() {
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
-							OneclickStop = 2;
+							OneclickStop = 3;
 						} else if (streamer == "3") {
 
 							$('#play i').attr('class', 'zmdi zmdi-play');
 							$('#play').removeClass('active');
 							$my_media.stop();
-							OneclickStop = 2;
+							OneclickStop = 3;
 						}
 						callmemabe = '2';
 						break;
@@ -470,7 +474,7 @@ function ShareTrack() {
 								$('#play i').attr('class', 'zmdi zmdi-play');
 								$('#play').addClass('active');
 								$my_media.play();
-								OneclickStop = 1;
+								OneclickStop = 2;
 							}, 3000);
 						};
 						break;
@@ -513,21 +517,21 @@ function events(action) {
         case 'music-controls-pause':
             console.log('Пауза');
 			OneclickPlay = 1;
-			OneclickStop = 2;
+			OneclickStop = 3;
 			$my_media.stop();
 			
             break;
         case 'music-controls-play':
             console.log('Плей');
 			OneclickPlay = 2;
-			OneclickStop = 1;
+			OneclickStop = 2;
 			$my_media.play();
 			
             break;
         case 'music-controls-destroy':
             console.log('Удалено');
 			OneclickPlay = 1;
-			OneclickStop = 2;
+			OneclickStop = 3;
 			$my_media.stop();
 			 
             break;
