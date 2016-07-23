@@ -486,10 +486,10 @@ function streamRePlayGO(){
 		$('#play i').attr('class', 'zmdi zmdi-play');
 		$('#play').addClass('active');
 		$my_media.play();
-	}, 3000);
+	}, 100);
 };
 function streamRePlay(){
-	console.log(OneclickPlay+' '+OneclickStop+' '+navigator.connection.type);
+	console.log(navigator.connection.type+' '+streamer+' '+OneclickStop+' '+OneclickPlay);
 	if(navigator.connection.type != 'none' && streamer == "1" && OneclickStop == "2"){
 		console.log('Сработали условия для перезапуска стрима!');
 		streamRePlayGO();
@@ -497,7 +497,7 @@ function streamRePlay(){
 }
 setInterval(function(){
 	streamRePlay()
-}, 3000);
+}, 6000); 
 // Sharing
  
  
