@@ -491,6 +491,7 @@ function streamRePlayGO(){
 function streamRePlay(){
 	console.log(OneclickPlay+' '+OneclickStop+' '+navigator.connection.type);
 	if(navigator.connection.type != 'none' && streamer == "1" && OneclickStop == "2"){
+		console.log('Сработали условия для перезапуска стрима!');
 		streamRePlayGO();
 	};	
 }
@@ -498,7 +499,7 @@ setInterval(function(){
 	streamRePlay()
 }, 3000);
 // Sharing
-
+ 
  
 ons.ready(function() {
 function events(action) {
