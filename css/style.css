@@ -19,6 +19,14 @@ body {
 #now .b{
 		font-weight: 700;
 }
+.bl_tbl{
+	display: table;
+	width: 100%;
+}
+.bl_tbl .bl_tbl_c {
+    display: table-cell;
+	vertical-align: middle;
+}
 .frame{
 	display: block;
     width: 100%;
@@ -26,6 +34,7 @@ body {
 }
 .frame .fab{
 	position: absolute;
+	top: 0;
 }
 .logo{
     width: 150px;
