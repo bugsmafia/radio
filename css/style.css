@@ -1,4 +1,32 @@
+body {
+    background: #000;
+}
 
+#now {
+    text-align: center;
+	text-transform: uppercase;
+	 color: #fff;
+}
+.wrap{
+	vertical-align: middle;
+    display: table-cell;
+    width: 100%;
+}
+#now .a{
+    
+   
+}
+#now .b{
+		font-weight: 700;
+}
+.frame{
+	display: block;
+    width: 100%;
+    position: relative;
+}
+.frame .fab{
+	position: absolute;
+}
 .logo{
     width: 150px;
     height: 107px;

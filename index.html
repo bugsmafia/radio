@@ -88,26 +88,37 @@
 <ons-template id="home.html">
 	<ons-page>
 
-		<ons-speed-dial position="top left" direction="down">
-			<ons-fab class="quiet"><i class="zmdi zmdi-menu"></i></ons-fab>
+		<ons-speed-dial position="top right" direction="down">
+			<ons-fab class="quiet"><i class="zmdi zmdi-more-vert"></i></ons-fab>
 			<ons-speed-dial-item onclick="modals('config')"><i class="zmdi zmdi-tune"></i></ons-speed-dial-item>
 			<ons-speed-dial-item onclick="modals('about')"><i class="zmdi zmdi-info-outline"></i></ons-speed-dial-item>
 		</ons-speed-dial>
-		<ons-fab position="top right" ripple  onclick="ShareTrack();"><i class="zmdi zmdi-share"></i></ons-fab>
+		
 
 		<div class="vert_grid"> 
+			<div class="vert_grid_box" id="now">
+				<div class="wrap">
+					<div class="a">Сейчас в эфире</div>
+					<div class="b">музыка non-stop</div>
+				</div>
+			</div>
 			<div class="vert_grid_box">
 				<div id="playinfo">
 					<div id="playinfoimg"><img src=""></div> 
 				</div>
 			</div>
 			<div class="vert_grid_box">
-				<div class="song">Загрузка...</div>
-				<div class="artist">ожидайте</div>
+				<div class="frame">
+					<div class="song">Загрузка...</div>
+					<div class="artist">ожидайте</div>
+					<ons-fab position="top left" ripple  onclick="ShareTrack();"><i class="zmdi zmdi-share"></i></ons-fab>
+				</div>
 			</div>
 
 			<div class="vert_grid_box">
+				<ons-fab ripple><i class="zmdi zmdi-thumb-down"></i></ons-fab>
 				<div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"></i></div>
+				<ons-fab ripple><i class="zmdi zmdi-thumb-up"></i></ons-fab>
 			</div>
 
 		</div>
