@@ -512,21 +512,24 @@ function events(action) {
             break;
         case 'music-controls-pause':
             console.log('Пауза');
-			$my_media.stop();
 			OneclickPlay = 1;
 			OneclickStop = 2;
+			$my_media.stop();
+			
             break;
         case 'music-controls-play':
             console.log('Плей');
-			$my_media.play();
 			OneclickPlay = 2;
 			OneclickStop = 1;
+			$my_media.play();
+			
             break;
         case 'music-controls-destroy':
             console.log('Удалено');
-			$my_media.stop();
 			OneclickPlay = 1;
 			OneclickStop = 2;
+			$my_media.stop();
+			 
             break;
 
         // Headset events (Android only)
