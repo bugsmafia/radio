@@ -61,10 +61,11 @@
 
 		<div class="vert_grid"> 
 			<div class="vert_grid_box" id="now">
-				<ons-row>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
-					<ons-col width="70%"><div class="a">Сейчас в эфире</div><div class="b">музыка non-stop</div></ons-col>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
+				<ons-row style="vertical-align: middle;display: table-cell;width: 100%;
+">
+
+					<ons-col width="100%"><div class="a">Сейчас в эфире</div><div class="b">музыка non-stop</div></ons-col>
+
 				</ons-row>
 			</div>
 			<div class="vert_grid_box">
@@ -76,15 +77,18 @@
 				<ons-row>
 					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab onclick="ShareTrack();" ripple><i class="zmdi zmdi-share"></i></ons-fab></ons-col>
 					<ons-col width="70%"><div class="song">Загрузка...</div><div class="artist">ожидайте</div></ons-col>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;">
+					<ons-fab ripple><i class="zmdi zmdi-thumb-down"></i></ons-fab>
+					<ons-fab ripple><i class="zmdi zmdi-thumb-up"></i></ons-fab>
+					</ons-col>
 				</ons-row>
 			</div>
 
 			<div class="vert_grid_box">
 				<ons-row>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab ripple><i class="zmdi zmdi-thumb-down"></i></ons-fab></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
 					<ons-col width="70%"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"></i></div></ons-col>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab ripple><i class="zmdi zmdi-thumb-up"></i></ons-fab></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
 				</ons-row>
 			</div>
 			<div class="vert_grid_box">
