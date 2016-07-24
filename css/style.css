@@ -52,28 +52,7 @@ body {
     background-size: inherit;
     z-index: -1;
 }
-#gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
-  z-index: 10;
-}
 
-#gradient2 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
-  z-index: 3;
-  background-image: 
-  -webkit-radial-gradient(80% 10%, circle, rgb(255, 152, 0), transparent),
-  -webkit-radial-gradient(80% 50%, circle, rgb(239, 227, 210), transparent),
-  -webkit-radial-gradient(20% 80%, 40em 40em, rgb(14,4,56), transparent),
-  -webkit-radial-gradient(10% 10%, circle, rgb(68,242,215), transparent);
-}
 #play {
     color: #fff;
     width: 3em;
