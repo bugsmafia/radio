@@ -355,11 +355,6 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 
 
 
-
-	
-	var volume = 85;
-	jQuery("#volume").val(volume);
-	window.plugins.mediaVolume.setVol(volume);
 	jQuery("#volume").on('input', function () {
 		var volume = jQuery("#volume").val();
 		window.plugins.mediaVolume.setVol(volume);
