@@ -331,9 +331,10 @@ var onError = function(msg) {}
 
 // Шарим треки
 function ShareTrack() {
+var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+localStorage.NowArtist+'. Присоединяйся к Радио13! #радио #музыка #онлайн';
 	modals('share');
 	var ShareData = {
-		message: 'На "Радио13" сейчас играет: '+localStorage.NowSong+' '+localStorage.NowArtist,
+		message: textShare,
 		subject: 'Мне нравится!',
 		files: [localStorage.TrackIdNowImgMega],
 		url: 'https://radio13.ru',
@@ -344,7 +345,7 @@ function ShareTrack() {
 	}
 
 	var onError = function(msg) {
-	  console.log("Sharing failed with message: " + msg);
+	  console.log("Ошибка: " + msg);
 	}
 	
 	window.plugins.socialsharing.shareWithOptions(ShareData, onSuccess, onError);
