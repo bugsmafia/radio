@@ -61,10 +61,11 @@
 
 		<div class="vert_grid"> 
 			<div class="vert_grid_box" id="now">
-				<div class="wrap">
-					<div class="a">Сейчас в эфире</div>
-					<div class="b">музыка non-stop</div>
-				</div>
+				<ons-row>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
+					<ons-col width="70%"><div class="a">Сейчас в эфире</div><div class="b">музыка non-stop</div></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
+				</ons-row>
 			</div>
 			<div class="vert_grid_box">
 				<div id="playinfo">
@@ -72,31 +73,25 @@
 				</div>
 			</div>
 			<div class="vert_grid_box">
-				<div class="frame">
-					<div class="song">Загрузка...</div>
-					<div class="artist">ожидайте</div>
-					<ons-fab position="top left" ripple  onclick="ShareTrack();"><i class="zmdi zmdi-share"></i></ons-fab>
-				</div>
+				<ons-row>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab onclick="ShareTrack();" ripple><i class="zmdi zmdi-share"></i></ons-fab></ons-col>
+					<ons-col width="70%"><div class="song">Загрузка...</div><div class="artist">ожидайте</div></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
+				</ons-row>
 			</div>
 
 			<div class="vert_grid_box">
-				<div class="bl_tbl">
-					<div class="bl_tbl_c" style="text-align: right;"><ons-fab ripple><i class="zmdi zmdi-thumb-down"></i></ons-fab></div>
-					<div class="bl_tbl_c"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"></i></div></div>
-					<div class="bl_tbl_c" style="text-align: left;"><ons-fab ripple><i class="zmdi zmdi-thumb-up"></i></ons-fab></div>
-				</div>
+				<ons-row>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab ripple><i class="zmdi zmdi-thumb-down"></i></ons-fab></ons-col>
+					<ons-col width="70%"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"></i></div></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab ripple><i class="zmdi zmdi-thumb-up"></i></ons-fab></ons-col>
+				</ons-row>
 			</div>
 			<div class="vert_grid_box">
 				<ons-row>
-				  <ons-col style="font-size: 2em;color: #fff;-webkit-box-flex: 0;text-align: center;">
-					<ons-icon icon="md-volume-down"></ons-icon>
-				  </ons-col>
-				  <ons-col>
-					<ons-range id="volume" style="width: 100%;" value="100"></ons-range>
-				  </ons-col>
-				  <ons-col  style="font-size: 2em;color: #fff;-webkit-box-flex: 0;text-align: center;">
-					<ons-icon icon="md-volume-up"></ons-icon>
-				  </ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-down"></ons-icon></ons-icon></ons-col>
+					<ons-col width="70%"><ons-range id="volume" style="width: 100%;text-align: center;margin: 0 auto;display: block;" value="100"></ons-range></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-up"></ons-icon></ons-icon></ons-col>
 				</ons-row>
 			</div>
 		</div>
