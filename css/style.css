@@ -125,11 +125,7 @@ ons-range:before {
     margin-bottom: -2px;
     background-color: #323232;
 }
-.range__left {
-    top: 19px;
-    height: 4px;
-    background-color: rgb(49, 49, 49);
-}
+
 .vert_grid{
     display: table;
     width: 100%;
