@@ -6,6 +6,7 @@ function getPageName(url) {
 // Функция выполнения кода при загрузки приложения
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
+	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 }
 // Функция исполнения когда приложение готово
 function onDeviceReady() {
@@ -545,6 +546,9 @@ function events(action) {
 MusicControls.subscribe(events);
 MusicControls.listen();
 
+
+
+  
 	
 	jQuery("#volume").on('input', function () {
 		var volume = jQuery("#volume").val();
