@@ -67,6 +67,6 @@
 
 <plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" />
 
-<plugin spec="https://github.com/g-w/cordova-volume.git" source="git" /> 
+<plugin spec="https://github.com/zhaoxinpeng/mediaVolume.git" source="git" /> 
 </widget>
  
