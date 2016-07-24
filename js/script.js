@@ -337,7 +337,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 		message: textShare,
 		subject: 'Мне нравится!',
 		files: [localStorage.TrackIdNowImgMega],
-		url: 'https://radio13.ru',
+		url: 'https://app.radio13.ru',
 		chooserTitle: 'Поделись треком!'
 	}
 	var onSuccess = function(result) {
