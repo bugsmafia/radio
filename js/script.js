@@ -357,12 +357,12 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 
 
 	
-	var volume = 100;
+	var volume = 85;
 	jQuery("#volume").val(volume);
+	window.plugins.mediaVolume.setVol(volume);
 	jQuery("#volume").on('input', function () {
 		var volume = jQuery("#volume").val();
-		volume = volume / 100;
-		player.Volume(volume);
+		window.plugins.mediaVolume.setVol(volume);
 	});
 	
 	
