@@ -67,5 +67,6 @@
 
 <plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" />
 
-<plugin spec="https://github.com/mgcrea/cordova-plugin-volume-control.git" source="git" />
+<plugin spec="https://github.com/g-w/cordova-volume.git" source="git" /> 
 </widget>
+ 
