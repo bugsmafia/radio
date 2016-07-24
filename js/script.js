@@ -355,10 +355,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 
 
 
-	jQuery("#volume").on('input', function () {
-		var volume = jQuery("#volume").val();
-		window.plugins.mediaVolume.setVol(volume);
-	});
+	
 	
 	
 	var streamer = 1;
@@ -591,5 +588,11 @@ MusicControls.listen();
           
         }
     } setInterval(updateGradient,10);
+	
+	jQuery("#volume").on('input', function () {
+		var volume = jQuery("#volume").val();
+		window.plugins.mediaVolume.setVol(volume);
+		console.log(volume);
+	});
 
 }); 
