@@ -363,7 +363,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 	var OneclickStop = 1;
 	// Функция кнопки ПЛЕЙ основной
 	function streamplay() {
-		
+		$("#play ons-progress-circular").show();
 		if (streamer == "1") {
 			OneclickStop = 2;
 			$my_media.play();
@@ -399,6 +399,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 						streamer = 1;
 						$('#play i').attr('class', 'zmdi zmdi-play');
 						$('#play').removeClass('active');
+						$("#play ons-progress-circular").hide();
 					}
 					if(status === PlayStream.MEDIA_STARTING){
 						console.log('starting');
@@ -406,6 +407,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 						streamer = 2;
 						$('#play i').attr('class', 'zmdi zmdi-play');
 						$('#play').addClass('active');
+						$("#play ons-progress-circular").show();
 					}
 					if(status === PlayStream.MEDIA_RUNNING){
 						console.log('running');
@@ -413,6 +415,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 						streamer = 3;
 						$('#play i').attr('class', 'zmdi zmdi-stop');
 						$('#play').addClass('active');
+						$("#play ons-progress-circular").hide();
 					}
 				}, 
 				function (err) {

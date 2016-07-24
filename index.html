@@ -51,12 +51,6 @@
 
 <ons-template id="home.html">
 	<ons-page>
-
-		<ons-speed-dial position="top right" direction="down">
-			<ons-fab class="quiet"><i class="zmdi zmdi-more-vert"></i></ons-fab>
-			<ons-speed-dial-item onclick="modals('config')"><i class="zmdi zmdi-tune"></i></ons-speed-dial-item>
-			<ons-speed-dial-item onclick="modals('about')"><i class="zmdi zmdi-info-outline"></i></ons-speed-dial-item>
-		</ons-speed-dial>
 		
 
 		<div class="vert_grid"> 
@@ -82,18 +76,18 @@
 				</ons-row>
 			</div>
 
-			<div class="vert_grid_box">
+			<div class="vert_grid_box"> 
 				<ons-row>
 					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
-					<ons-col width="70%"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"></i></div></ons-col>
+					<ons-col width="70%"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"><ons-progress-circular indeterminate></ons-progress-circular></i></div></ons-col>
 					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
 				</ons-row>
 			</div>
 			<div class="vert_grid_box">
 				<ons-row>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-down"></ons-icon></ons-icon></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: rgba(255, 255, 255, 0.39);-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-down"></ons-icon></ons-icon></ons-col>
 					<ons-col width="70%"><ons-range id="volume" style="width: 100%;text-align: center;margin: 0 auto;display: block;" value="100"></ons-range></ons-col>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-up"></ons-icon></ons-icon></ons-col>
+					<ons-col width="15%" style="text-align: center; font-size: 2em;color: rgba(255, 255, 255, 0.39);-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-up"></ons-icon></ons-icon></ons-col>
 				</ons-row>
 			</div>
 		</div>

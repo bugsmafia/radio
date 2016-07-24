@@ -119,11 +119,13 @@ ons-range:before {
 .button--material:active {
     background-color: #f1f1f1;
 }
-ons-range:before {
-    top: 21px;
-    height: 4px;
-    margin-bottom: -2px;
-    background-color: #323232;
+#play ons-progress-circular {
+	position: absolute;
+    top: -0.4em;
+    left: 0.5em;
+    width: 2em;
+    height: 2em;
+	display: none;
 }
 
 .vert_grid{
