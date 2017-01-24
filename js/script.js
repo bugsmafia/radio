@@ -192,8 +192,6 @@ function infoArtist(type, id, md, artist, song) {
 						if (jQuery(this).text()) {
 							$himg = jQuery(this).text();
 							localStorage.setItem(md+'Extralarge', $himg);
-						} else {
-							infoArtist(type, id, md, artist, song);
 						}
 					}
 					if (img == "mega") {
@@ -502,50 +500,50 @@ setInterval(function(){
  
  
 ons.ready(function() {
-function events(action) {
-    switch(action) {
-        case 'music-controls-next':
-            console.log('Следующая');
-            break;
-        case 'music-controls-previous':
-            console.log('Предыдущая');
-            break;
-        case 'music-controls-pause':
-            console.log('Пауза');
-			OneclickPlay = 1;
-			OneclickStop = 3;
-			$my_media.stop();
-			
-            break;
-        case 'music-controls-play':
-            console.log('Плей');
-			OneclickPlay = 2;
-			OneclickStop = 2;
-			$my_media.play();
-			
-            break;
-        case 'music-controls-destroy':
-            console.log('Удалено');
-			OneclickPlay = 1;
-			OneclickStop = 3;
-			$my_media.stop();
-			 
-            break;
+	function events(action) {
+		switch(action) {
+			case 'music-controls-next':
+				console.log('Следующая');
+				break;
+			case 'music-controls-previous':
+				console.log('Предыдущая');
+				break;
+			case 'music-controls-pause':
+				console.log('Пауза');
+				OneclickPlay = 1;
+				OneclickStop = 3;
+				$my_media.stop();
+				
+				break;
+			case 'music-controls-play':
+				console.log('Плей');
+				OneclickPlay = 2;
+				OneclickStop = 2;
+				$my_media.play();
+				
+				break;
+			case 'music-controls-destroy':
+				console.log('Удалено');
+				OneclickPlay = 1;
+				OneclickStop = 3;
+				$my_media.stop();
+				 
+				break;
 
-        // Headset events (Android only)
-        case 'music-controls-media-button' :
-            console.log('music-controls-media-button');
-            break;
-        case 'music-controls-headset-unplugged':
-            console.log('unplugged');
-            break;
-        case 'music-controls-headset-plugged':
-            console.log('plugged');
-            break;
-        default:
-            break;
-    }
-} 
+			// Headset events (Android only)
+			case 'music-controls-media-button' :
+				console.log('music-controls-media-button');
+				break;
+			case 'music-controls-headset-unplugged':
+				console.log('unplugged');
+				break;
+			case 'music-controls-headset-plugged':
+				console.log('plugged');
+				break;
+			default:
+				break;
+		}
+	} 
 MusicControls.subscribe(events);
 MusicControls.listen();
 
