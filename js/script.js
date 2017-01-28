@@ -8,18 +8,16 @@ document.addEventListener('init', function(event) {
 
 	var page = event.target;
 	console.log(event);
-	page.querySelector('#page-conf').onclick = function() {
-		document.querySelector('#navigator').pushPage('conf.html');
-	};
-	if (page.matches('#home')) {
 
+	if (page.matches('#home')) {
+		page.querySelector('#page-conf').onclick = function() {
+			document.querySelector('#navigator').pushPage('conf.html');
+		};
 	} else if (page.matches('#second-page')) {
 		page.querySelector('#pop-button').onclick = function() {
 			document.querySelector('#navigator').popPage();
 		};
 	}
-});
-document.setActiveTab('index', function(event) {
 });
 
 // Функция выполнения кода при загрузки приложения
