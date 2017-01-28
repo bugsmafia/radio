@@ -286,7 +286,7 @@ function LoadStatus() {
 		UpdateStatus(data.i);
 	});
 }
-function LoadHot(){	
+function LoadHot(){
 	$key = 0;
 	//jQuery('#hottrack').html('').attr('class', '');
 	jQuery.getJSON("http://app.radio13.ru/status/json.php?i=hot", function(data) {
@@ -298,13 +298,25 @@ function LoadHot(){
 			//infoCookie('hottrack', object.id, object.md, object.artist, object.song);
 			}
 		});
-	//GridSlideTrack('hottrack');
+
+	});		
+}
+function LoadHistory(){
+	$key = 0;
+	//jQuery('#newtrack').html('').attr('class', '');
+	jQuery.getJSON("http://app.radio13.ru/status/json.php?i=new", function(data) {
+		jQuery.each(data, function(key, object){				
+			jQuery('#newtrack').append('<li class="list__item"><div class="list__item__left"><img class="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
+			//infoCookie('newtrack', object.id, object.md, object.artist, object.song);
+		});
+
 	});		
 }
 // Устанавливаем первоначальное значение куки о треке
 localStorage.setItem('TrackIdNow', '');
 LoadStatus();
 LoadHot();
+LoadHistory();
 // Каждые 15 секунд запрашиваем статус эфира
 setInterval(function(){
 	LoadStatus();
