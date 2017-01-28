@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 	<script src="cordova.js"></script>
     <link rel="stylesheet" href="css/onsenui.css"/>
-    <link rel="stylesheet" href="css/onsen-css-components.css"/>
+    <link rel="stylesheet" href="css/stylus/style.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 	
 	
@@ -59,7 +59,6 @@
 			<div class="left"><ons-back-button>Page 1</ons-back-button></div>
 			<div class="center">Радио 13</div>
 		</ons-toolbar>
-		<ons-button id="page-conf">Push page</ons-button>
 		<div class="vert_grid"> 
 			<div class="vert_grid_box" id="now">
 				<ons-row style="vertical-align: middle;display: table-cell;width: 100%;">
@@ -91,13 +90,6 @@
 					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
 				</ons-row>
 			</div>
-			<div class="vert_grid_box">
-				<ons-row>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: rgba(255, 255, 255, 0.39);-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-down"></ons-icon></ons-icon></ons-col>
-					<ons-col width="70%"><ons-range id="volume" style="width: 100%;text-align: center;margin: 0 auto;display: block;" value="100"></ons-range></ons-col>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: rgba(255, 255, 255, 0.39);-webkit-box-flex: 0;"><ons-icon><ons-icon icon="md-volume-up"></ons-icon></ons-icon></ons-col>
-				</ons-row>
-			</div>
 		</div>
 		
 
@@ -110,12 +102,8 @@
 		<ons-toolbar>
 			<div class="left"><ons-back-button>назад</ons-back-button></div>
 			<div class="center">Рейтинг треков</div>
-		</ons-toolbar>
-		
-		
-		<ul class="list" id="hottrack">
-		</ul>
-		
+		</ons-toolbar>		
+		<ul class="list" id="hottrack"></ul>		
 	</ons-page>
 </ons-template>
 <ons-template id="new.html">
@@ -124,6 +112,7 @@
 			<div class="left"><ons-back-button>назад</ons-back-button></div>
 			<div class="center">Горячие новинки</div>
 		</ons-toolbar>
+		<ul class="list" id="newtrack"></ul>
 	</ons-page>
 </ons-template>
 <ons-template id="conf.html">
