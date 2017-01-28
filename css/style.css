@@ -417,3 +417,20 @@ footer .play {
 .tab-bar__label:first-child {
 	font-size: 12px;
 }
+
+.navigation-bar__center .song{
+	margin: 0;
+	padding: 0;
+	line-height: 1rem;
+	text-align: left;
+	margin-top: 0.4rem;
+	font-size: 1.2rem;
+}
+.navigation-bar__center .artist{
+	margin: 0;
+	padding: 0;
+	line-height: 1rem;
+	text-align: left;
+	margin-top: 0.4rem;
+	font-size: 1rem;
+}

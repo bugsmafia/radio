@@ -66,220 +66,178 @@ function modals(name) {
 // Канал трансляции
 var streamChanel = "http://play.radio13.ru/64";
 
+
+function infoCookie(type, id, md, artist, song){
+	if(localStorage.getItem(md)){
+		var images = jQuery.parseJSON(localStorage.getItem(md));
+		jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
+		jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
+	} else {
+		infoAlbum(type, id, md, artist, song);
+	};
+}
+function infoCookieNow(type, id, md, artist, song){
+	console.log(type+id+md+artist+song);
+	if(localStorage.getItem(md)){
+		var images = jQuery.parseJSON(localStorage.getItem(md));
+		jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
+		jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
+	} else {
+		infoAlbum(type, id, md, artist, song);
+	};
+}
+
+
 // Тянем информацию об альбоме
-function infoAlbum(type, id, md, artist, song) {
+function infoAlbum(type, id, md, artist, song){
 	var api = '88571316d4e244f24172ea9a9bf602fe';
-	jQuery.ajax({
-		url: "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&artist=" + artist + "&album=" + song + "&api_key=" + api,
-		type: "GET",
-		dataType: "xml",
-		success: function(xml) {
-			jQuery(xml).find('album').each(function() {
-				jQuery(this).find('image').each(function() {
-					var img = jQuery(this).attr('size');
-					if (img == "small") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Small', $himg);
-						}
-					};
-					if (img == "medium") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Medium', $himg);
-						}
-					};
-					if (img == "large") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();							
-							localStorage.setItem(md+'Large', $himg);
-						}
-					};
-					if (img == "extralarge") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							
-							localStorage.setItem(md+'Extralarge', $himg);
-						}
-					}
-					if (img == "mega") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Mega', $himg);
-						} else {
-							infoArtist(type, id, md, artist, song);
-						}
-					}
-				})
-			});
-			
-			var ImgCashSmall = ContentSync.sync({
-					src: localStorage.TrackIdNowImgSmall,
-					id: 'small/'+getPageName(localStorage.TrackIdNowImgSmall),
-					type: 'local'
-			});
-			var ImgCashMedium = ContentSync.sync({
-					src: localStorage.TrackIdNowImgMedium,
-					id: 'medium/'+getPageName(localStorage.TrackIdNowImgMedium),
-					type: 'local'
-			});
-			var ImgCashLarge = ContentSync.sync({
-					src: localStorage.TrackIdNowImgLarge,
-					id: 'large/'+getPageName(localStorage.TrackIdNowImgLarge),
-					type: 'local'
-			});
-			var ImgCashExtralarge = ContentSync.sync({
-					src: localStorage.TrackIdNowImgExtralarge,
-					id: 'extralarge/'+getPageName(localStorage.TrackIdNowImgExtralarge),
-					type: 'local'
-			});
-			var ImgCashMega = ContentSync.sync({
-					src: localStorage.TrackIdNowImgMega,
-					id: 'mega/'+getPageName(localStorage.TrackIdNowImgMega),
-					type: 'local'
-			});
-			
-			ImgCashSmall.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-			});
-			ImgCashMedium.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-			});
-			ImgCashLarge.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-				if(data.localPath){
-					statusBar(data.localPath);
-				}
-			});
-			ImgCashExtralarge.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-				if(data.localPath){
-					jQuery('#' + type + ' #' + id + ' img').attr('src', data.localPath);
+	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&artist="+artist+"&track="+song+"&format=json&autocorrect=1&api_key="+api, function(load) {
+		console.log("infoAlbum "+artist+" "+song);
+	})
+	.done(function(load) {
+		if(load.error){
+			console.log( "Ошибка: "+load.error+" - "+load.message);
+			infoArtist(type, id, md, artist, song);
+		} else {
+			var images = {};
+			if(load.track.album){
+				if(load.track.album.image){
+					$.each(load.track.album.image, function(i, image) {
+						images[image.size] = image['#text'];
+					});
+					localStorage.setItem(md, JSON.stringify(images));
 					
+					jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
+					jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
+				} else {
+					console.log( "Малая обложка отсутствует к треку, отправляем запрос на получение обложки исполнителя" );
+					infoArtist(type, id, md, artist, song);
 				}
-				
-			});
-			ImgCashMega.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-			});
-			
-		},
-		statusCode: {
-			400: function() {
+			} else {
+				console.log( "Малая обложка отсутствует к треку, отправляем запрос на получение обложки исполнителя" );
 				infoArtist(type, id, md, artist, song);
 			}
 		}
-	});
+	})
+	.fail(function() {
+		console.log( "Ошибка в получении ответа от сервера, отправляем запрос на получение обложки исполнителя" );
+		infoArtist(type, id, md, artist, song);
+	})
+	.always(function() {
+		console.log( "always complete" );
+	});	
 }
-// Тянем информацию об артисте 
-function infoArtist(type, id, md, artist, song) {
+function infoArtist(type, id, md, artist, song){
 	var api = '88571316d4e244f24172ea9a9bf602fe';
-	jQuery.ajax({
-		url: "http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=" + artist + "&api_key=" + api,
-		type: "GET",
-		dataType: "xml",
-		success: function(xml) {
-			jQuery(xml).find('artist').each(function() {
-				jQuery(this).find('image').each(function() {
-					var img = jQuery(this).attr('size');
-					if (img == "small") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Small', $himg);
-						}
-					};
-					if (img == "medium") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Medium', $himg);
-						}
-					};
-					if (img == "large") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Large', $himg);
-						};
-					};
-					if (img == "extralarge") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Extralarge', $himg);
-						}
-					}
-					if (img == "mega") {
-						if (jQuery(this).text()) {
-							$himg = jQuery(this).text();
-							localStorage.setItem(md+'Mega', $himg);
-						}
-					}
-				})
-			});
-			
-			var ImgCashSmall = ContentSync.sync({
-					src: localStorage.TrackIdNowImgSmall,
-					id: 'small/'+getPageName(localStorage.TrackIdNowImgSmall),
-					type: 'local'
-			});
-			var ImgCashMedium = ContentSync.sync({
-					src: localStorage.TrackIdNowImgMedium,
-					id: 'medium/'+getPageName(localStorage.TrackIdNowImgMedium),
-					type: 'local'
-			});
-			var ImgCashLarge = ContentSync.sync({
-					src: localStorage.TrackIdNowImgLarge,
-					id: 'large/'+getPageName(localStorage.TrackIdNowImgLarge),
-					type: 'local'
-			});
-			var ImgCashExtralarge = ContentSync.sync({
-					src: localStorage.TrackIdNowImgExtralarge,
-					id: 'extralarge/'+getPageName(localStorage.TrackIdNowImgExtralarge),
-					type: 'local'
-			});
-			var ImgCashMega = ContentSync.sync({
-					src: localStorage.TrackIdNowImgMega,
-					id: 'mega/'+getPageName(localStorage.TrackIdNowImgMega),
-					type: 'local'
-			});
-			
-			ImgCashSmall.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-			});
-			ImgCashMedium.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-				
-			});
-			ImgCashLarge.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-				if(data.localPath){
-					statusBar(data.localPath);
-				}
-			});
-			ImgCashExtralarge.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-				if(data.localPath){
-					jQuery('#' + type + ' #' + id + ' img').attr('src', data.localPath);
-				}
-			});
-			ImgCashMega.on('complete', function(data) {
-				console.log(data.localPath);
-				console.log(data.cached);
-			});
-		},
-		statusCode: {
-			400: function() {}
+	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist="+artist+"&format=json&autocorrect=1&api_key="+api, function(load) {
+		console.log("Данные об артисте получены");
+	})
+	.done(function(load) {
+		var images = {};
+		if(load.artist.image){
+			if(load.artist.image){
+				$.each(load.artist.image, function(i, image) {
+					images[image.size] = image['#text'];
+				});
+				localStorage.setItem(md, JSON.stringify(images));
+				jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
+				jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
+			} else {
+				console.log( "Обложка артиста отсутствует" );
+			}
 		}
-	});
+	})
+	.fail(function() {
+		console.log( "Ошибка в получении обложки артиста от сервера" );
+	})
+	.always(function() {
+		console.log( "always complete" );
+	});	
+}
+function BiginfoAlbum(type, id, md, artist, song){
+	var api = '88571316d4e244f24172ea9a9bf602fe';
+	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&artist="+artist+"&track="+song+"&format=json&autocorrect=1&api_key="+api, function(load) {
+		console.log(type+" BiginfoAlbum "+artist+" "+song);
+	})
+	.done(function(load) {
+		if(load.error){
+			console.log( "Ошибка: "+load.error+" - "+load.message);
+			BiginfoArtist(type, id, md, artist, song, 'error');
+		} else {
+			console.log("Обработка данных для Большой обложки трека");
+			var images = {};
+			if(load.track.album){
+				console.log("load.track.album");
+				if(load.track.album.image){
+					console.log("load.track.album.image");
+					$.each(load.track.album.image, function(i, image) {
+						images[image.size] = image['#text'];
+					});
+					localStorage.setItem(md, JSON.stringify(images));
+					var urlimg = '/';
+					if(images.mega){
+						urlimg = images.mega;
+					} else {
+						if(images.extralarge){
+							urlimg = images.extralarge;
+						} else {
+							urlimg = images.large;
+						}
+					}
+					console.log('#'+type+' #'+id+' img '+urlimg);
+					jQuery('#'+type+' #'+id+' img').attr('src', urlimg);
+					jQuery('#'+type+' .images').css('background-image', 'url('+images.mega+')');
+				} else {
+					console.log( "1 Обложка отсутствует к треку, отправляем запрос на получение обложки исполнителя" );
+					BiginfoArtist(type, id, md, artist, song, 'BiginfoAlbum');
+				}
+			} else {
+				console.log( "2 Обложка отсутствует к треку, отправляем запрос на получение обложки исполнителя" );
+				BiginfoArtist(type, id, md, artist, song, 'BiginfoAlbum');
+			}
+		}
+	})
+	.fail(function() {
+		console.log( "Ошибка в получении ответа от сервера, отправляем запрос на получение обложки исполнителя" );
+		BiginfoArtist(type, id, md, artist, song, 'BiginfoAlbum');
+	})
+	.always(function() {
+		console.log( "always complete" );
+	});	
 }
 
+function BiginfoArtist(type, id, md, artist, song, is){
+	var api = '88571316d4e244f24172ea9a9bf602fe';
+	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist="+artist+"&format=json&autocorrect=1&api_key="+api, function(load) {
+		console.log(type+" BiginfoArtist Данные об артисте получены ("+is+")");
+	})
+	.done(function(load) {
+		var images = {};
+		if(load.artist.image){
+			if(load.artist.image){
+				$.each(load.artist.image, function(i, image) {
+					images[image.size] = image['#text'];
+				});
+				localStorage.setItem(md, JSON.stringify(images));
+				
+				console.log(images);
+				jQuery('#'+type+' #'+id+' img').attr('src', images.mega);
+				jQuery('#'+type+' .images').css('background-image', 'url('+images.mega+')');
+			} else {
+				console.log( "Обложка артиста отсутствует" );
+			}
+		}
+	})
+	.fail(function() {
+		console.log( "Ошибка в получении обложки артиста от сервера" );
+	})
+	.always(function() {
+		if(id == "parallax"){
+			$('.parallax').parallax();
+		}
+		console.log( "always complete" );
+	});	
+}
 // Загружаем статус эфира
 function LoadStatus() {
 	jQuery.getJSON("http://app.radio13.ru/status/json.php?i=i", function(data) {
@@ -294,8 +252,8 @@ function LoadHot(){
 			if (object.md == 'f574aa2039805a9c1283398934788232'){
 			} else {
 			$himg =  'images/no-image.png';
-			jQuery('#hottrack').append('<li class="list__item"><div class="list__item__left"><img class="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
-			//infoCookie('hottrack', object.id, object.md, object.artist, object.song);
+			jQuery('#hottrack').append('<li class="list__item"  id="'+object.id+'"><div class="list__item__left"><img class="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
+			infoCookieNow('hottrack', object.id, object.md, object.artist, object.song);
 			}
 		});
 
@@ -306,8 +264,8 @@ function LoadHistory(){
 	//jQuery('#newtrack').html('').attr('class', '');
 	jQuery.getJSON("http://app.radio13.ru/status/json.php?i=new", function(data) {
 		jQuery.each(data, function(key, object){				
-			jQuery('#newtrack').append('<li class="list__item"><div class="list__item__left"><img class="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
-			//infoCookie('newtrack', object.id, object.md, object.artist, object.song);
+			jQuery('#newtrack').append('<li class="list__item" id="'+object.id+'"><div class="list__item__left"><img class="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
+			infoCookieNow('newtrack', object.id, object.md, object.artist, object.song);
 		});
 
 	});		
