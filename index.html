@@ -10,9 +10,7 @@
 	
   </head>
 <body onload="onLoad()">
-<ons-splitter>
-  <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
-</ons-splitter>
+<!-- <ons-navigator id="navigator" page="index.html"></ons-navigator> -->
 
 <ons-modal id="Modal_Config">
 	<ons-page>
@@ -48,21 +46,31 @@
 <p style="text-align: center;"><ons-progress-circular indeterminate></ons-progress-circular></p>
 </ons-modal>
 
+<ons-tabbar  animation="fade"  var="myTabbar">
+	<ons-tab label="Радио" page="index.html" active></ons-tab>
+	<ons-tab label="ТОП" page="top.html"></ons-tab>
+	<ons-tab label="Новинки" page="new.html"></ons-tab>
+	<ons-tab label="Настройки" page="conf.html"></ons-tab>
+</ons-tabbar>
 
-<ons-template id="home.html">
-	<ons-page>
-		
-
+<ons-template id="index.html">
+	<ons-page id="home">
+		<ons-toolbar>
+			<div class="left"><ons-back-button>Page 1</ons-back-button></div>
+			<div class="center">Радио 13</div>
+		</ons-toolbar>
+		<ons-button id="page-conf">Push page</ons-button>
 		<div class="vert_grid"> 
 			<div class="vert_grid_box" id="now">
-				<ons-row style="vertical-align: middle;display: table-cell;width: 100%;
-">
+				<ons-row style="vertical-align: middle;display: table-cell;width: 100%;">
 
 					<ons-col width="100%"><div class="a">Сейчас в эфире</div><div class="b">музыка non-stop</div></ons-col>
 
 				</ons-row>
 			</div>
 			<div class="vert_grid_box">
+			
+
 				<div id="playinfo">
 					<div id="playinfoimg"><img src=""></div> 
 				</div>
@@ -95,9 +103,37 @@
 
 
 
-  </ons-page>
+	</ons-page>
 </ons-template>
-
+<ons-template id="top.html">
+	<ons-page id="top">
+		<ons-toolbar>
+			<div class="left"><ons-back-button>назад</ons-back-button></div>
+			<div class="center">Рейтинг треков</div>
+		</ons-toolbar>
+		
+		
+		<ul class="list" id="hottrack">
+		</ul>
+		
+	</ons-page>
+</ons-template>
+<ons-template id="new.html">
+	<ons-page id="new">
+		<ons-toolbar>
+			<div class="left"><ons-back-button>назад</ons-back-button></div>
+			<div class="center">Горячие новинки</div>
+		</ons-toolbar>
+	</ons-page>
+</ons-template>
+<ons-template id="conf.html">
+	<ons-page id="conf">
+		<ons-toolbar>
+			<div class="left"><ons-back-button>назад</ons-back-button></div>
+			<div class="center">Настройки приложения</div>
+		</ons-toolbar>
+	</ons-page>
+</ons-template>
 <script src="js/onsenui.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jQuery.fastClick.js"></script>
