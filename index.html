@@ -5,13 +5,9 @@
 	<script src="cordova.js"></script>
     <link rel="stylesheet" href="css/onsenui.css"/>
     <link rel="stylesheet" href="css/stylus/style.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
-	
-	
+	<link rel="stylesheet" href="css/style.css"/>	
   </head>
 <body onload="onLoad()">
-<!-- <ons-navigator id="navigator" page="index.html"></ons-navigator> -->
-
 <ons-modal id="Modal_Config">
 	<ons-page>
 		<ons-toolbar>      
@@ -61,38 +57,36 @@
 			</div>
 		</ons-toolbar>
 		<div class="vert_grid"> 
-			<div class="vert_grid_box" id="now">
-				<ons-row style="vertical-align: middle;display: table-cell;width: 100%;">
-
-					<ons-col width="100%"><div class="a">Сейчас в эфире</div><div class="b">музыка non-stop</div></ons-col>
-
-				</ons-row>
-			</div>
-			<div class="vert_grid_box">
 			
-
+			<div class="vert_grid_box">
 				<div id="playinfo">
-					<div id="playinfoimg"><img src=""></div> 
+					<div id="playinfoimg">
+						<div class="alb"></div>
+						<div class="progress-bar progress-bar--indeterminate" id="LoadAlbImg">
+							<div class="progress-bar__primary"></div>
+							<div class="progress-bar__secondary"></div>
+						</div>
+					</div> 
 				</div>
 			</div>
-			<div class="vert_grid_box">
-				<ons-row>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"><ons-fab onclick="ShareTrack();" ripple><i class="zmdi zmdi-share"></i></ons-fab></ons-col>
-					<ons-col width="70%"><div class="song">Загрузка...</div><div class="artist">ожидайте</div></ons-col>
-					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;">
-					</ons-col>
+			<div class="vert_grid_box" id="now">
+				<ons-row style="vertical-align: middle;display: table-cell;width: 100%;">
+					<ons-col width="100%"><div class="a">Сейчас в эфире</div><div class="b">музыка non-stop</div></ons-col>
 				</ons-row>
 			</div>
 
 			<div class="vert_grid_box"> 
 				<ons-row>
 					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
-					<ons-col width="70%"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"><ons-progress-circular indeterminate></ons-progress-circular></i></div></ons-col>
+					<ons-col width="70%"><div id="play" onclick="streamplay();"><i class="zmdi zmdi-play"></i></div></ons-col>
 					<ons-col width="15%" style="text-align: center; font-size: 2em;color: #fff;-webkit-box-flex: 0;"></ons-col>
 				</ons-row>
 			</div>
 		</div>
-		
+		<div class="progress-bar progress-bar--indeterminate" id="LoadStream">
+			<div class="progress-bar__primary"></div>
+			<div class="progress-bar__secondary"></div>
+		</div>
 
 
 

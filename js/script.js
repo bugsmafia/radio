@@ -7,7 +7,7 @@ function getPageName(url) {
 document.addEventListener('init', function(event) {
 
 	var page = event.target;
-	console.log(event);
+	console.log(event.target.matches);
 
 	if (page.matches('#home')) {
 		page.querySelector('#page-conf').onclick = function() {
@@ -18,6 +18,11 @@ document.addEventListener('init', function(event) {
 			document.querySelector('#navigator').popPage();
 		};
 	}
+	
+	if (event.target.matches('#home')) {
+		ons.notification.alert('home 1 is initiated.');
+		// Set up content...
+	  }
 });
 
 // Функция выполнения кода при загрузки приложения
@@ -77,7 +82,6 @@ function infoCookie(type, id, md, artist, song){
 	};
 }
 function infoCookieNow(type, id, md, artist, song){
-	console.log(type+id+md+artist+song);
 	if(localStorage.getItem(md)){
 		var images = jQuery.parseJSON(localStorage.getItem(md));
 		jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
@@ -92,7 +96,7 @@ function infoCookieNow(type, id, md, artist, song){
 function infoAlbum(type, id, md, artist, song){
 	var api = '88571316d4e244f24172ea9a9bf602fe';
 	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&artist="+artist+"&track="+song+"&format=json&autocorrect=1&api_key="+api, function(load) {
-		console.log("infoAlbum "+artist+" "+song);
+
 	})
 	.done(function(load) {
 		if(load.error){
@@ -157,7 +161,6 @@ function infoArtist(type, id, md, artist, song){
 function BiginfoAlbum(type, id, md, artist, song){
 	var api = '88571316d4e244f24172ea9a9bf602fe';
 	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=track.getInfo&artist="+artist+"&track="+song+"&format=json&autocorrect=1&api_key="+api, function(load) {
-		console.log(type+" BiginfoAlbum "+artist+" "+song);
 	})
 	.done(function(load) {
 		if(load.error){
@@ -167,9 +170,9 @@ function BiginfoAlbum(type, id, md, artist, song){
 			console.log("Обработка данных для Большой обложки трека");
 			var images = {};
 			if(load.track.album){
-				console.log("load.track.album");
+
 				if(load.track.album.image){
-					console.log("load.track.album.image");
+
 					$.each(load.track.album.image, function(i, image) {
 						images[image.size] = image['#text'];
 					});
@@ -184,7 +187,6 @@ function BiginfoAlbum(type, id, md, artist, song){
 							urlimg = images.large;
 						}
 					}
-					console.log('#'+type+' #'+id+' img '+urlimg);
 					jQuery('#'+type+' #'+id+' img').attr('src', urlimg);
 					jQuery('#'+type+' .images').css('background-image', 'url('+images.mega+')');
 				} else {
@@ -209,7 +211,6 @@ function BiginfoAlbum(type, id, md, artist, song){
 function BiginfoArtist(type, id, md, artist, song, is){
 	var api = '88571316d4e244f24172ea9a9bf602fe';
 	jQuery.getJSON( "http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist="+artist+"&format=json&autocorrect=1&api_key="+api, function(load) {
-		console.log(type+" BiginfoArtist Данные об артисте получены ("+is+")");
 	})
 	.done(function(load) {
 		var images = {};
@@ -219,8 +220,6 @@ function BiginfoArtist(type, id, md, artist, song, is){
 					images[image.size] = image['#text'];
 				});
 				localStorage.setItem(md, JSON.stringify(images));
-				
-				console.log(images);
 				jQuery('#'+type+' #'+id+' img').attr('src', images.mega);
 				jQuery('#'+type+' .images').css('background-image', 'url('+images.mega+')');
 			} else {

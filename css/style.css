@@ -68,34 +68,13 @@ body {
   padding: 0px;
   margin: 0px;
   z-index: 3;
-  background-image: 
-  -webkit-radial-gradient(80% 10%, circle, rgb(255, 152, 0), transparent),
-  -webkit-radial-gradient(80% 50%, circle, rgb(239, 227, 210), transparent),
-  -webkit-radial-gradient(20% 80%, 40em 40em, rgb(14,4,56), transparent),
-  -webkit-radial-gradient(10% 10%, circle, rgb(68,242,215), transparent);
+	background-color: #212121;
 }
 ons-range:before {
     background-color: rgba(255, 255, 255, 0.29);
 }
 .range__left {
     background-color: rgba(255, 255, 255, 0.86);
-}
-#play {
-    color: #fff;
-    width: 3em;
-    /* height: 1em; */
-    position: relative;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 4em;
-}
-
-#playinfo {
-    text-align: center;
-    margin: 0 auto;
-    margin: auto;
-    vertical-align: middle;
-    display: table-cell;
 }
 
 .fab {
@@ -114,7 +93,7 @@ ons-range:before {
     transition: all 0.2s ease;
 }
 .navigation-bar--material {
-	background-color: #3d4844;
+	background-color: #151515;
 }
 .button--material:active {
     background-color: #f1f1f1;
@@ -418,19 +397,3 @@ footer .play {
 	font-size: 12px;
 }
 
-.navigation-bar__center .song{
-	margin: 0;
-	padding: 0;
-	line-height: 1rem;
-	text-align: left;
-	margin-top: 0.4rem;
-	font-size: 1.2rem;
-}
-.navigation-bar__center .artist{
-	margin: 0;
-	padding: 0;
-	line-height: 1rem;
-	text-align: left;
-	margin-top: 0.4rem;
-	font-size: 1rem;
-}
