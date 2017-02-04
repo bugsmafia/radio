@@ -55,7 +55,8 @@ h6 {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  overflow: visible;
+  overflow-x: visible;
+  overflow-y: hidden;
   font-size: 17px;
   color: #1f1f21;
   -ms-overflow-style: none;
@@ -340,7 +341,7 @@ input:disabled + .switch__toggle {
 }
 .switch.switch--material input:checked + .switch__toggle .switch__handle {
   left: 16px;
-  background-color: #fffff0;
+  background-color: #009688;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
@@ -583,8 +584,8 @@ ons-range[disabled] .range {
   -webkit-border-radius: 0;
   border-radius: 0;
   background-color: transparent;
-  background-image: -webkit-radial-gradient(7px, circle 6px, #fffff0 0%, #fffff0 6px, transparent 7px);
-  background-image: radial-gradient(circle 6px at 7px, #fffff0 0%, #fffff0 6px, transparent 7px);
+  background-image: -webkit-radial-gradient(7px, circle 6px, #009688 0%, #009688 6px, transparent 7px);
+  background-image: radial-gradient(circle 6px at 7px, #009688 0%, #009688 6px, transparent 7px);
   margin-top: -1px;
 }
 .range--material::-moz-range-thumb {
@@ -593,8 +594,8 @@ ons-range[disabled] .range {
   height: 12px;
   width: 12px;
   border-radius: 100%;
-  border-color: #fffff0;
-  background-color: #fffff0;
+  border-color: #009688;
+  background-color: #009688;
 }
 .range--material::-moz-range-track {
   background-color: #e0e0e0;
@@ -605,12 +606,12 @@ ons-range[disabled] .range {
   height: 12px;
   width: 12px;
   border-radius: 100%;
-  border-color: #fffff0;
-  background-color: #fffff0;
+  border-color: #009688;
+  background-color: #009688;
 }
 .range--material:focus::-moz-range-thumb {
-  border-color: #fffff0;
-  background-color: #fffff0;
+  border-color: #009688;
+  background-color: #009688;
 }
 .range--material::-moz-range-thumb:before {
   display: none;
@@ -619,7 +620,7 @@ ons-range[disabled] .range {
   display: none;
 }
 .range--material::-ms-fill-lower {
-  background-color: #fffff0;
+  background-color: #009688;
 }
 .range--material::-moz-range-thumb:after {
   margin-top: -3px;
@@ -630,7 +631,7 @@ ons-range[disabled] .range {
   border-radius: 100%;
   height: 12px;
   width: 12px;
-  background-color: #fffff0;
+  background-color: #009688;
   opacity: 0.2;
   -moz-transition: -moz-transform 0.1s linear;
   transition: transform 0.1s linear;
@@ -645,7 +646,7 @@ ons-range[disabled] .range {
   border-radius: 100%;
   height: 12px;
   width: 12px;
-  background-color: #fffff0;
+  background-color: #009688;
   opacity: 0.2;
   -webkit-transition: -webkit-transform 0.1s linear;
   transition: transform 0.1s linear;
@@ -662,7 +663,7 @@ ons-range[disabled] .range {
   border-radius: 100%;
   height: 12px;
   width: 12px;
-  background-color: #fffff0;
+  background-color: #009688;
   opacity: 0.2;
   transition: transform 0.1s linear;
 }
@@ -679,7 +680,7 @@ ons-range[disabled] .range {
   transform: scale(2.5);
 }
 .range--material__left {
-  background-color: #fff;
+  background-color: #009688;
 }
 /* topdoc
   name: Navigation Bar
@@ -845,30 +846,6 @@ ons-range[disabled] .range {
     </div>
 */
 /* topdoc
-  name: Transparent Navigation Bar
-  class: navigation-bar--transparent
-  use: Toolbar Button, Navigation Bar
-  markup:
-    <div class="navigation-bar navigation-bar--transparent">
-      <div class="navigation-bar__left">
-        <span class="toolbar-button--quiet">
-          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-        </span>
-      </div>
-      <div class="navigation-bar__center">
-        Navigation Bar
-      </div>
-      <div class="navigation-bar__right">
-        <span class="toolbar-button--quiet">Label</span>
-      </div>
-    </div>
-*/
-.navigation-bar--transparent {
-  background-color: transparent;
-  background-image: none;
-  border: none;
-}
-/* topdoc
   name: Navigation Bar with Outline Button
   use: Toolbar Button, Navigation Bar
   markup:
@@ -889,31 +866,6 @@ ons-range[disabled] .range {
       </div>
     </div>
 */
-/* topdoc
-  name: Transparent Navigation Bar
-  class: navigation-bar--transparent
-  use: Toolbar Button, Navigation Bar
-  markup:
-    <!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
-    <div class="navigation-bar navigation-bar--transparent">
-      <div class="navigation-bar__left">
-        <span class="toolbar-button--quiet">
-          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-        </span>
-      </div>
-      <div class="navigation-bar__center">
-        Navigation Bar
-      </div>
-      <div class="navigation-bar__right">
-        <span class="toolbar-button--quiet">Label</span>
-      </div>
-    </div>
-*/
-.navigation-bar--transparent {
-  background-color: transparent;
-  background-image: none;
-  border: none;
-}
 /* topdoc
   name: Bottom Bar
   class: bottom-bar
@@ -1045,10 +997,29 @@ ons-range[disabled] .range {
   -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
   box-shadow: 0 1px 5px rgba(0,0,0,0.3);
   padding: 0;
-  background-color: #fffff0;
+  background-color: #009688;
   -webkit-background-size: 0;
   background-size: 0;
 }
+/* topdoc
+  name: No Shadow Navigation Bar
+  class: navigation-bar--noshadow
+  use: Toolbar Button, Navigation Bar
+  markup:
+    <div class="navigation-bar navigation-bar--noshadow">
+      <div class="navigation-bar__left">
+        <span class="toolbar-button--quiet">
+          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+        </span>
+      </div>
+      <div class="navigation-bar__center">
+        Navigation Bar
+      </div>
+      <div class="navigation-bar__right">
+        <span class="toolbar-button--quiet">Label</span>
+      </div>
+    </div>
+*/
 .navigation-bar--noshadow {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1125,6 +1096,32 @@ ons-range[disabled] .range {
       </div>
     </div>
 */
+/* topdoc
+  name: Transparent Navigation Bar
+  class: navigation-bar--transparent
+  use: Toolbar Button, Navigation Bar
+  markup:
+    <div class="navigation-bar navigation-bar--transparent">
+      <div class="navigation-bar__left">
+        <span class="toolbar-button--quiet">
+          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+        </span>
+      </div>
+      <div class="navigation-bar__center">
+        Navigation Bar
+      </div>
+      <div class="navigation-bar__right">
+        <span class="toolbar-button--quiet">Label</span>
+      </div>
+    </div>
+*/
+.navigation-bar--transparent {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-image: none;
+  border-bottom: none;
+}
 /* topdoc
   name: Button
   class: button
@@ -1708,7 +1705,7 @@ ons-range[disabled] .range {
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   text-transform: uppercase;
-  background-color: #fffff0;
+  background-color: #009688;
   color: #fff;
   font-family: 'Roboto', 'Noto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1717,7 +1714,7 @@ ons-range[disabled] .range {
 .button--material:active {
   -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.4);
   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.4);
-  background-color: #fffff0;
+  background-color: #009688;
   opacity: 1;
 }
 .button--material:focus {
@@ -1801,7 +1798,7 @@ ons-range[disabled] .range {
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   text-transform: uppercase;
-  background-color: #fffff0;
+  background-color: #009688;
   color: #fff;
   font-family: 'Roboto', 'Noto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -1809,13 +1806,13 @@ ons-range[disabled] .range {
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: transparent;
-  color: #fffff0;
+  color: #009688;
 }
 .button--material--flat:active {
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: transparent;
-  color: #fffff0;
+  color: #009688;
   outline: 0;
   opacity: 1;
   border: none;
@@ -1824,7 +1821,7 @@ ons-range[disabled] .range {
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: transparent;
-  color: #fffff0;
+  color: #009688;
   outline: 0;
   opacity: 1;
   border: none;
@@ -2199,6 +2196,16 @@ ons-range[disabled] .range {
   font-weight: 400;
   font-size: 17px;
 }
+.tab-bar__badge.notification {
+  position: absolute;
+  top: 5px;
+  z-index: 10;
+  font-size: 12px;
+  height: 16px;
+  line-height: 16px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
 .tab-bar__icon + .tab-bar__label {
   font-size: 10px;
   line-height: 1;
@@ -2404,7 +2411,7 @@ ons-range[disabled] .range {
   border-bottom: 4px solid rgba(24,103,194,0.81);
 }
 .tab-bar--material {
-  background-color: #fffff0;
+  background-color: #009688;
   border-bottom-width: 0px;
   -webkit-box-shadow: 0 4px 2px -2px rgba(0,0,0,0.14), 0 3px 5px -2px rgba(0,0,0,0.12), 0 5px 1px -4px rgba(0,0,0,0.2);
   box-shadow: 0 4px 2px -2px rgba(0,0,0,0.14), 0 3px 5px -2px rgba(0,0,0,0.12), 0 5px 1px -4px rgba(0,0,0,0.2);
@@ -2672,7 +2679,7 @@ ons-range[disabled] .range {
 }
 .toolbar-button--material:active {
   opacity: 1;
-  background-color: #26a69a;
+  background-color: rgba(255,255,255,0.15);
 }
 .back-button {
   height: 44px;
@@ -2724,7 +2731,7 @@ ons-range[disabled] .range {
 }
 .back-button--material:active {
   opacity: 1;
-  background-color: #26a69a;
+  background-color: rgba(255,255,255,0.15);
 }
 /* topdoc
   name: Checkbox
@@ -3106,7 +3113,7 @@ ons-range[disabled] .range {
   border: 2px solid #717171;
 }
 .checkbox--material__input:checked + .checkbox--material__checkmark:before {
-  background-color: #fffff0;
+  background-color: #009688;
   border: none;
 }
 .checkbox--material__input + .checkbox--material__checkmark:after {
@@ -3377,7 +3384,7 @@ ons-range[disabled] .range {
 }
 .radio-button--material__input:checked + .radio-button__checkmark:before {
   background: transparent;
-  border: 2px solid #fffff0;
+  border: 2px solid #009688;
 }
 .radio-button--material__input + .radio-button__checkmark:after {
   background: #717171;
@@ -3390,7 +3397,7 @@ ons-range[disabled] .range {
 }
 .radio-button--material__input:checked + .radio-button__checkmark:after {
   opacity: 1;
-  background: #fffff0;
+  background: #009688;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -4762,17 +4769,42 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   -webkit-border-radius: 0;
   border-radius: 0;
   height: 24px;
+  vertical-align: middle;
   -webkit-transform: translate3d(0, 0, 0);
 }
 .text-input--material__label {
-  color: #fffff0;
+  color: #afafaf;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  pointer-events: none;
+}
+.text-input--material__label--active {
+  color: #009688;
+  -webkit-transform: translate(0, -75%) scale(0.75);
+  -moz-transform: translate(0, -75%) scale(0.75);
+  -ms-transform: translate(0, -75%) scale(0.75);
+  -o-transform: translate(0, -75%) scale(0.75);
+  transform: translate(0, -75%) scale(0.75);
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transition: -webkit-transform 0.1s ease-in, color 0.1s ease-in;
+  -moz-transition: -moz-transform 0.1s ease-in, color 0.1s ease-in;
+  -o-transition: -o-transform 0.1s ease-in, color 0.1s ease-in;
+  transition: transform 0.1s ease-in, color 0.1s ease-in;
 }
 .text-input--material:focus {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fffff0), to(#fffff0)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, #afafaf));
-  background-image: -webkit-linear-gradient(#fffff0, #fffff0), -webkit-linear-gradient(bottom, transparent 1px, #afafaf 1px);
-  background-image: -moz-linear-gradient(#fffff0, #fffff0), -moz-linear-gradient(bottom, transparent 1px, #afafaf 1px);
-  background-image: -o-linear-gradient(#fffff0, #fffff0), -o-linear-gradient(bottom, transparent 1px, #afafaf 1px);
-  background-image: linear-gradient(#fffff0, #fffff0), linear-gradient(to top, transparent 1px, #afafaf 1px);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, #afafaf));
+  background-image: -webkit-linear-gradient(#009688, #009688), -webkit-linear-gradient(bottom, transparent 1px, #afafaf 1px);
+  background-image: -moz-linear-gradient(#009688, #009688), -moz-linear-gradient(bottom, transparent 1px, #afafaf 1px);
+  background-image: -o-linear-gradient(#009688, #009688), -o-linear-gradient(bottom, transparent 1px, #afafaf 1px);
+  background-image: linear-gradient(#009688, #009688), linear-gradient(to top, transparent 1px, #afafaf 1px);
   -webkit-animation: material-text-input-animate 0.3s forwards;
   -moz-animation: material-text-input-animate 0.3s forwards;
   -o-animation: material-text-input-animate 0.3s forwards;
@@ -4796,6 +4828,48 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 }
 .text-input--material::-ms-clear {
   display: none;
+}
+/* topdoc
+  name: Transparent Text Input
+  class: text-input--transparent
+  markup:
+    <input type="text" class="text-input--transparent" placeholder="text" value="">
+    <br>
+    <input type="text" class="text-input--transparent" placeholder="text" value="" disabled>
+*/
+.text-input--transparent {
+  border: none;
+  background-color: transparent;
+  background-image: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.text-input--transparent:focus {
+  background-image: none;
+}
+.text-input--transparent:disabled {
+  border: none;
+  background-color: transparent;
+}
+.text-input--transparent:disabled::-webkit-input-placeholder {
+  border: none;
+  background-color: transparent;
+}
+.text-input--transparent:disabled::-moz-placeholder {
+  border: none;
+  background-color: transparent;
+}
+.text-input--transparent:disabled::-ms-input-placeholder {
+  border: none;
+  background-color: transparent;
+}
+.text-input--transparent:disabled:-ms-input-placeholder {
+  border: none;
+  background-color: transparent;
+}
+.text-input--transparent:invalid {
+  border: none;
+  background-color: transparent;
 }
 @-moz-keyframes material-text-input-animate {
   0% {
@@ -4824,6 +4898,334 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   }
 }
 @keyframes material-text-input-animate {
+  0% {
+    -webkit-background-size: 0% 2px, 100% 2px;
+    background-size: 0% 2px, 100% 2px;
+  }
+  100% {
+    -webkit-background-size: 100% 2px, 100% 2px;
+    background-size: 100% 2px, 100% 2px;
+  }
+}
+/* topdoc
+  name: Select input
+  class: select-input
+  modifiers:
+    :underbar: display an bar under the select input
+    :material: material design select input
+  markup:
+    <select class="select-input">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+*/
+.select-input {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  vertical-align: top;
+  outline: none;
+  line-height: 1;
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  font-size: 15px;
+  height: 31px;
+  border-color: #ccc;
+  color: rgba(24,103,194,0.81);
+}
+.select-input::-webkit-input-placeholder {
+  color: #999;
+}
+.select-input::-moz-placeholder {
+  color: #999;
+}
+.select-input::-ms-input-placeholder {
+  color: #999;
+}
+.select-input:-ms-input-placeholder {
+  color: #999;
+}
+.select-input:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+  border: none;
+  background-color: transparent;
+}
+.select-input:disabled::-webkit-input-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+}
+.select-input:disabled::-moz-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+}
+.select-input:disabled::-ms-input-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+}
+.select-input:disabled:-ms-input-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+}
+.select-input::-ms-clear {
+  display: none;
+}
+.select-input:invalid {
+  border: none;
+  background-color: transparent;
+  color: #1f1f21;
+}
+.select-input[multiple] {
+  height: 62px;
+}
+/* topdoc
+  name: Material select input
+  class: select-input--material
+  markup:
+    <select class="select-input select-input--material">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+*/
+.select-input--material {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  vertical-align: top;
+  outline: none;
+  line-height: 1;
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: $material-select-input-text-color;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, $material-select-input-inactive-color));
+  background-image: -webkit-linear-gradient(bottom, transparent 1px, $material-select-input-inactive-color 1px);
+  background-image: -moz-linear-gradient(bottom, transparent 1px, $material-select-input-inactive-color 1px);
+  background-image: -o-linear-gradient(bottom, transparent 1px, $material-select-input-inactive-color 1px);
+  background-image: linear-gradient(to top, transparent 1px, $material-select-input-inactive-color 1px);
+  -webkit-background-size: 100% 2px;
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+  padding-bottom: 2px;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 24px;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.select-input--material__label {
+  color: $material-select-input-inactive-color;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  pointer-events: none;
+}
+.select-input--material__label--active {
+  color: $material-select-input-active-color;
+  -webkit-transform: translate(0, -75%) scale(0.75);
+  -moz-transform: translate(0, -75%) scale(0.75);
+  -ms-transform: translate(0, -75%) scale(0.75);
+  -o-transform: translate(0, -75%) scale(0.75);
+  transform: translate(0, -75%) scale(0.75);
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transition: -webkit-transform 0.1s ease-in, color 0.1s ease-in;
+  -moz-transition: -moz-transform 0.1s ease-in, color 0.1s ease-in;
+  -o-transition: -o-transform 0.1s ease-in, color 0.1s ease-in;
+  transition: transform 0.1s ease-in, color 0.1s ease-in;
+}
+.select-input--material:focus {
+  background-image: -webkit-gradient(linear, left top, left bottom, from($material-select-input-active-color), to($material-select-input-active-color)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, $material-select-input-inactive-color));
+  background-image: -webkit-linear-gradient($material-select-input-active-color, $material-select-input-active-color), -webkit-linear-gradient(bottom, transparent 1px, $material-select-input-inactive-color 1px);
+  background-image: -moz-linear-gradient($material-select-input-active-color, $material-select-input-active-color), -moz-linear-gradient(bottom, transparent 1px, $material-select-input-inactive-color 1px);
+  background-image: -o-linear-gradient($material-select-input-active-color, $material-select-input-active-color), -o-linear-gradient(bottom, transparent 1px, $material-select-input-inactive-color 1px);
+  background-image: linear-gradient($material-select-input-active-color, $material-select-input-active-color), linear-gradient(to top, transparent 1px, $material-select-input-inactive-color 1px);
+  -webkit-animation: material-select-input-animate 0.3s forwards;
+  -moz-animation: material-select-input-animate 0.3s forwards;
+  -o-animation: material-select-input-animate 0.3s forwards;
+  animation: material-select-input-animate 0.3s forwards;
+}
+.select-input--material::-webkit-input-placeholder {
+  color: $material-select-input-inactive-color;
+  line-height: 20px;
+}
+.select-input--material::-moz-placeholder {
+  color: $material-select-input-inactive-color;
+  line-height: 20px;
+}
+.select-input--material::-ms-input-placeholder {
+  color: $material-select-input-inactive-color;
+  line-height: 20px;
+}
+.select-input--material:-ms-input-placeholder {
+  color: $material-select-input-inactive-color;
+  line-height: 20px;
+}
+.select-input--material::-ms-clear {
+  display: none;
+}
+/* topdoc
+  name: Underbar select input
+  class: select-input--underbar
+  markup:
+    <select class="select-input select-input--underbar">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+*/
+.select-input--underbar {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  vertical-align: top;
+  outline: none;
+  line-height: 1;
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  font-size: 15px;
+  height: 31px;
+  border-color: #ccc;
+  color: rgba(24,103,194,0.81);
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ccc;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.select-input--underbar:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+  border: none;
+  background-color: transparent;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ccc;
+}
+.select-input--underbar:disabled::-webkit-input-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+  border: none;
+  background-color: transparent;
+}
+.select-input--underbar:disabled::-moz-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+  border: none;
+  background-color: transparent;
+}
+.select-input--underbar:disabled::-ms-input-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+  border: none;
+  background-color: transparent;
+}
+.select-input--underbar:disabled:-ms-input-placeholder {
+  border: none;
+  background-color: transparent;
+  color: #999;
+  border: none;
+  background-color: transparent;
+}
+.select-input--underbar:invalid {
+  border: none;
+  background-color: transparent;
+  color: #1f1f21;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ccc;
+}
+@-moz-keyframes material-select-input-animate {
+  0% {
+    background-size: 0% 2px, 100% 2px;
+  }
+  100% {
+    background-size: 100% 2px, 100% 2px;
+  }
+}
+@-webkit-keyframes material-select-input-animate {
+  0% {
+    -webkit-background-size: 0% 2px, 100% 2px;
+    background-size: 0% 2px, 100% 2px;
+  }
+  100% {
+    -webkit-background-size: 100% 2px, 100% 2px;
+    background-size: 100% 2px, 100% 2px;
+  }
+}
+@-o-keyframes material-select-input-animate {
+  0% {
+    background-size: 0% 2px, 100% 2px;
+  }
+  100% {
+    background-size: 100% 2px, 100% 2px;
+  }
+}
+@keyframes material-select-input-animate {
   0% {
     -webkit-background-size: 0% 2px, 100% 2px;
     background-size: 0% 2px, 100% 2px;
@@ -5202,7 +5604,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .alert-dialog-button--primal {
   font-weight: 500;
 }
-.alert-dialog-footer--one {
+.alert-dialog-footer--rowfooter {
   white-space: nowrap;
   display: -webkit-box;
   display: -webkit-flex;
@@ -5214,7 +5616,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-.alert-dialog-button--one {
+.alert-dialog-button--rowfooter {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-box-flex: 1;
@@ -5226,7 +5628,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   border-left: 1px solid #ddd;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .alert-dialog-button--one {
+  .alert-dialog-button--rowfooter {
     border-top: none;
     border-left: none;
     -webkit-background-size: 100% 1px, 1px 100%;
@@ -5239,11 +5641,11 @@ input[type="search"].search-input::-webkit-search-cancel-button {
     background-image: linear-gradient(0deg, transparent, transparent 50%, #ddd 50%), linear-gradient(90deg, transparent, transparent 50%, #ddd 50%);
   }
 }
-.alert-dialog-button--one:first-child {
+.alert-dialog-button--rowfooter:first-child {
   border-left: none;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .alert-dialog-button--one:first-child {
+  .alert-dialog-button--rowfooter:first-child {
     border-top: none;
     -webkit-background-size: 100% 1px;
     background-size: 100% 1px;
@@ -5326,10 +5728,10 @@ input[type="search"].search-input::-webkit-search-cancel-button {
           Hello World!
         </div>
 
-        <div class="alert-dialog-footer alert-dialog-footer--one">
-          <button class="alert-dialog-button alert-dialog-button--one">Left</button>
-          <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one">Center</button>
-          <button class="alert-dialog-button alert-dialog-button--one">Right</button>
+        <div class="alert-dialog-footer alert-dialog-footer--rowfooter">
+          <button class="alert-dialog-button alert-dialog-button--rowfooter">Left</button>
+          <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--rowfooter">Center</button>
+          <button class="alert-dialog-button alert-dialog-button--rowfooter">Right</button>
         </div>
       </div>
     </div>
@@ -5406,7 +5808,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   font-size: 14px;
   font-weight: 500;
   outline: none;
-  color: #fffff0;
+  color: #009688;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .alert-dialog-button--material {
@@ -5416,13 +5818,13 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .alert-dialog-button--material:active {
   background-color: initial;
 }
-.alert-dialog-button--one--material,
-.alert-dialog-button--one--material:first-child {
+.alert-dialog-button--rowfooter--material,
+.alert-dialog-button--rowfooter--material:first-child {
   border: 0;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .alert-dialog-button--one--material,
-  .alert-dialog-button--one--material:first-child {
+  .alert-dialog-button--rowfooter--material,
+  .alert-dialog-button--rowfooter--material:first-child {
     background: none;
   }
 }
@@ -5766,7 +6168,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .progress-bar--determinate > .progress-bar__primary,
 .progress-bar--determinate > .progress-bar__secondary {
   position: absolute;
-  background-color: #fffff0;
+  background-color: #009688;
   top: 0;
   bottom: 0;
   -webkit-transition: width 0.3s linear;
@@ -5782,7 +6184,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .progress-bar--indeterminate:before {
   content: '';
   position: absolute;
-  background-color: #fffff0;
+  background-color: #009688;
   top: 0;
   left: 0;
   bottom: 0;
@@ -5795,7 +6197,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .progress-bar--indeterminate:after {
   content: '';
   position: absolute;
-  background-color: #fffff0;
+  background-color: #009688;
   top: 0;
   left: 0;
   bottom: 0;
@@ -5950,7 +6352,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   -moz-animation: progress__dash 1.5s ease-in-out infinite;
   -o-animation: progress__dash 1.5s ease-in-out infinite;
   animation: progress__dash 1.5s ease-in-out infinite;
-  stroke: #fffff0;
+  stroke: #009688;
   -webkit-transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   -moz-transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   -o-transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -6110,7 +6512,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   color: #fff;
   vertical-align: middle;
   text-align: center;
-  background-color: #fffff0;
+  background-color: #009688;
   border: 0px solid currentColor;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -6125,7 +6527,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .fab:active {
   -webkit-box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
   box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
-  background-color: #fffff0;
+  background-color: #009688;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;

@@ -6,23 +6,6 @@ function getPageName(url) {
 
 document.addEventListener('init', function(event) {
 
-	var page = event.target;
-	console.log(event.target.matches);
-
-	if (page.matches('#home')) {
-		page.querySelector('#page-conf').onclick = function() {
-			document.querySelector('#navigator').pushPage('conf.html');
-		};
-	} else if (page.matches('#second-page')) {
-		page.querySelector('#pop-button').onclick = function() {
-			document.querySelector('#navigator').popPage();
-		};
-	}
-	
-	if (event.target.matches('#home')) {
-		ons.notification.alert('home 1 is initiated.');
-		// Set up content...
-	  }
 });
 
 // Функция выполнения кода при загрузки приложения
@@ -110,9 +93,26 @@ function infoAlbum(type, id, md, artist, song){
 						images[image.size] = image['#text'];
 					});
 					localStorage.setItem(md, JSON.stringify(images));
-					
-					jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
-					jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
+					var sync = ContentSync.sync({
+						src: mega,
+						id: 'mega-'+id
+					});
+					jQuery('#LoadAlbImg .progress-bar__primary').show();
+					sync.on('progress', function(data) {
+						jQuery('#LoadAlbImg .progress-bar__primary').css('width', data.progress+'%')
+					});
+					sync.on('complete', function(data) {
+						// data.localPath
+						jQuery('#LoadAlbImg .progress-bar__primary').css('width', '100%');
+						jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+data.localPath+')');
+						
+						setTimeout(function() {
+							jQuery('#LoadAlbImg .progress-bar__primary').hide();
+							jQuery('#LoadAlbImg .progress-bar__primary').css('width', '0%');
+						}, 1000);
+					});
+					//jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
+					//jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
 				} else {
 					console.log( "Малая обложка отсутствует к треку, отправляем запрос на получение обложки исполнителя" );
 					infoArtist(type, id, md, artist, song);
@@ -144,8 +144,28 @@ function infoArtist(type, id, md, artist, song){
 					images[image.size] = image['#text'];
 				});
 				localStorage.setItem(md, JSON.stringify(images));
-				jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
-				jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
+				
+				var sync = ContentSync.sync({
+					src: mega,
+					id: 'mega-'+id
+				});
+				jQuery('#LoadAlbImg .progress-bar__primary').show();
+				sync.on('progress', function(data) {
+					jQuery('#LoadAlbImg .progress-bar__primary').css('width', data.progress+'%')
+				});
+				sync.on('complete', function(data) {
+						// data.localPath
+					jQuery('#LoadAlbImg .progress-bar__primary').css('width', '100%');
+					jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+data.localPath+')');
+						
+					setTimeout(function() {
+						jQuery('#LoadAlbImg .progress-bar__primary').hide();
+						jQuery('#LoadAlbImg .progress-bar__primary').css('width', '0%');
+					}, 1000);
+				});
+				
+				//jQuery('#'+type+' #'+id+' img').attr('src', images.extralarge);
+				//jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+images.extralarge+')');
 			} else {
 				console.log( "Обложка артиста отсутствует" );
 			}
@@ -363,7 +383,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 	var OneclickStop = 1;
 	// Функция кнопки ПЛЕЙ основной
 	function streamplay() {
-		$("#play ons-progress-circular").show();
+		$("#LoadStream").show();
 		if (streamer == "1") {
 			OneclickStop = 2;
 			$my_media.play();
@@ -399,7 +419,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 						streamer = 1;
 						$('#play i').attr('class', 'zmdi zmdi-play');
 						$('#play').removeClass('active');
-						$("#play ons-progress-circular").hide();
+						$("#LoadStream").hide();
 					}
 					if(status === PlayStream.MEDIA_STARTING){
 						console.log('starting');
@@ -407,7 +427,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 						streamer = 2;
 						$('#play i').attr('class', 'zmdi zmdi-play');
 						$('#play').addClass('active');
-						$("#play ons-progress-circular").show();
+						$("#LoadStream").show();
 					}
 					if(status === PlayStream.MEDIA_RUNNING){
 						console.log('running');
@@ -415,7 +435,7 @@ var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+loc
 						streamer = 3;
 						$('#play i').attr('class', 'zmdi zmdi-stop');
 						$('#play').addClass('active');
-						$("#play ons-progress-circular").hide();
+						$("#LoadStream").hide();
 					}
 				}, 
 				function (err) {
@@ -489,11 +509,13 @@ function streamRePlayGO(){
 	}, 100);
 };
 function streamRePlay(){
-	console.log(navigator.connection.type+' '+streamer+' '+OneclickStop+' '+OneclickPlay);
-	if(navigator.connection.type != 'none' && streamer == "1" && OneclickStop == "2"){
-		console.log('Сработали условия для перезапуска стрима!');
-		streamRePlayGO();
-	};	
+	if(navigator){
+		console.log(navigator.connection.type+' '+streamer+' '+OneclickStop+' '+OneclickPlay);
+		if(navigator.connection.type != 'none' && streamer == "1" && OneclickStop == "2"){
+			console.log('Сработали условия для перезапуска стрима!');
+			streamRePlayGO();
+		};	
+	}
 }
 setInterval(function(){
 	streamRePlay()
@@ -546,8 +568,10 @@ ons.ready(function() {
 				break;
 		}
 	} 
-MusicControls.subscribe(events);
-MusicControls.listen();
+if(!MusicControls){
+	MusicControls.subscribe(events);
+	MusicControls.listen();
+}
 
 
 
