@@ -97,7 +97,7 @@ function infoAlbum(type, id, md, artist, song){
 						src: images.mega,
 						id: 'mega-'+id
 					});
-					jQuery('#LoadAlbImg .progress-bar__primary').show();
+					jQuery('#LoadAlbImg').show();
 					sync.on('progress', function(data) {
 						jQuery('#LoadAlbImg .progress-bar__primary').css('width', data.progress+'%')
 					});
@@ -107,7 +107,7 @@ function infoAlbum(type, id, md, artist, song){
 						jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+data.localPath+')');
 						
 						setTimeout(function() {
-							jQuery('#LoadAlbImg .progress-bar__primary').hide();
+							jQuery('#LoadAlbImg').hide();
 							jQuery('#LoadAlbImg .progress-bar__primary').css('width', '0%');
 						}, 1000);
 					});
@@ -149,13 +149,13 @@ function infoArtist(type, id, md, artist, song){
 					src: images.mega,
 					id: 'mega-'+id
 				});
-				jQuery('#LoadAlbImg .progress-bar__primary').show();
+				jQuery('#LoadAlbImg').show();
 				sync.on('progress', function(data) {
 					jQuery('#LoadAlbImg .progress-bar__primary').css('width', data.progress+'%')
 				});
 				sync.on('complete', function(data) {
 						// data.localPath
-					jQuery('#LoadAlbImg .progress-bar__primary').css('width', '100%');
+					jQuery('#LoadAlbImg').css('width', '100%');
 					jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+data.localPath+')');
 						
 					setTimeout(function() {
