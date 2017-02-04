@@ -94,7 +94,7 @@ function infoAlbum(type, id, md, artist, song){
 					});
 					localStorage.setItem(md, JSON.stringify(images));
 					var sync = ContentSync.sync({
-						src: mega,
+						src: images.mega,
 						id: 'mega-'+id
 					});
 					jQuery('#LoadAlbImg .progress-bar__primary').show();
@@ -146,7 +146,7 @@ function infoArtist(type, id, md, artist, song){
 				localStorage.setItem(md, JSON.stringify(images));
 				
 				var sync = ContentSync.sync({
-					src: mega,
+					src: images.mega,
 					id: 'mega-'+id
 				});
 				jQuery('#LoadAlbImg .progress-bar__primary').show();
