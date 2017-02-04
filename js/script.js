@@ -296,9 +296,14 @@ function infoAlbum(type, id, md, artist, song){
 						images[image.size] = image['#text'];
 					});
 					localStorage.setItem(md, JSON.stringify(images));
-					console.log('mega-'+md);
+					var urlimages = '';
+					if(images.mega){
+						urlimages = images.mega;
+					} else if (images.extralarge){
+						urlimages = images.extralarge;
+					}
 					var sync = ContentSync.sync({
-						src: images.mega,
+						src: urlimages,
 						id: 'mega-'+md
 					});
 					jQuery('#LoadAlbImg').show();
@@ -348,9 +353,14 @@ function infoArtist(type, id, md, artist, song){
 					images[image.size] = image['#text'];
 				});
 				localStorage.setItem(md, JSON.stringify(images));
-				console.log('mega-'+md);
+				var urlimages = '';
+				if(images.mega){
+					urlimages = images.mega;
+				} else if (images.extralarge){
+					urlimages = images.extralarge;
+				}
 				var sync = ContentSync.sync({
-					src: images.mega,
+					src: urlimages,
 					id: 'mega-'+md
 				});
 				
