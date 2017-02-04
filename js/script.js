@@ -314,6 +314,7 @@ function infoAlbum(type, id, md, artist, song){
 						// data.localPath
 						jQuery('#LoadAlbImg .progress-bar__primary').css('width', '100%');
 						jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+data.localPath+')');
+						jQuery('#'+type+' #'+id+' img').attr('src', data.localPath);
 						
 						setTimeout(function() {
 							jQuery('#LoadAlbImg').hide();
@@ -372,6 +373,7 @@ function infoArtist(type, id, md, artist, song){
 						// data.localPath
 					jQuery('#LoadAlbImg').css('width', '100%');
 					jQuery('#'+type+' #'+id+' .alb').css('background-image', 'url('+data.localPath+')');
+					jQuery('#'+type+' #'+id+' img').attr('src', data.localPath);
 						
 					setTimeout(function() {
 						jQuery('#LoadAlbImg .progress-bar__primary').hide();
