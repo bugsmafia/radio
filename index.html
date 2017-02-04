@@ -55,6 +55,10 @@
 			<div class="center">
 				<div class="song">Загрузка...</div><div class="artist">ожидайте</div>
 			</div>
+			<div class="right">
+			<ons-toolbar-button><i class="zmdi zmdi-favorite-outline"></i></ons-toolbar-button>
+			<ons-toolbar-button onclick="ShareTrack()"><i class="zmdi zmdi-share"></i></ons-toolbar-button>
+			</div>
 		</ons-toolbar>
 		<div class="vert_grid"> 
 			
@@ -94,7 +98,6 @@
 <ons-template id="top.html">
 	<ons-page id="top">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>назад</ons-back-button></div>
 			<div class="center">Рейтинг треков</div>
 		</ons-toolbar>		
 		<ul class="list" id="hottrack"></ul>		
@@ -103,7 +106,6 @@
 <ons-template id="new.html">
 	<ons-page id="new">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>назад</ons-back-button></div>
 			<div class="center">Горячие новинки</div>
 		</ons-toolbar>
 		<ul class="list" id="newtrack"></ul>
@@ -112,7 +114,7 @@
 <ons-template id="conf.html">
 	<ons-page id="conf">
 		<ons-toolbar>
-			<div class="left"><ons-back-button>назад</ons-back-button></div>
+			
 			<div class="center">Настройки приложения</div>
 		</ons-toolbar>
 	</ons-page>
