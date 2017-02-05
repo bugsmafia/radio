@@ -13,6 +13,7 @@ function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 	
+	LoadHot();
 	LoadLove();
 }
 // Функция исполнения когда приложение готово
@@ -279,21 +280,7 @@ function LoadStatus() {
 		UpdateStatus(data.i);
 	});
 }
-function LoadHot(){
-	$key = 0;
-	//jQuery('#hottrack').html('').attr('class', '');
-	jQuery.getJSON("http://app.radio13.ru/status/json.php?i=hot", function(data) {
-		jQuery.each(data, function(key, object){
-			if (object.md == 'f574aa2039805a9c1283398934788232'){
-			} else {
-			$himg =  'images/no-image.png';
-			jQuery('#hottrack').append('<li class="list__item"  id="'+object.id+'"><div class="list__item__left"><img class="list__item__thumbnail" src="'+$himg+'" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
-			infoCookieNow('hottrack', object.id, object.md, object.artist, object.song);
-			}
-		});
 
-	});		
-}
 function LoadHistory(){
 	$key = 0;
 	//jQuery('#newtrack').html('').attr('class', '');
@@ -314,7 +301,7 @@ function LoadHistory(){
 localStorage.setItem('TrackIdNow', '');
 LoadStatus();
 
-LoadHot();
+
 LoadHistory();
 
 // Каждые 15 секунд запрашиваем статус эфира
@@ -379,27 +366,7 @@ var onSuccess = function(result) {
 }
 var onError = function(msg) {}
 
-// Шарим треки
-function ShareTrack() {
-var textShare = 'Отличная музыка: '+localStorage.NowSong+' - '+localStorage.NowArtist+'. Присоединяйся к Радио13! #радио #музыка #онлайн';
-	modals('share');
-	var ShareData = {
-		message: textShare,
-		subject: 'Мне нравится!',
-		files: [localStorage.TrackIdNowImgMega],
-		url: 'https://app.radio13.ru',
-		chooserTitle: 'Поделись треком!'
-	}
-	var onSuccess = function(result) {
-	  modals('share');
-	}
 
-	var onError = function(msg) {
-	  console.log("Ошибка: " + msg);
-	}
-	
-	window.plugins.socialsharing.shareWithOptions(ShareData, onSuccess, onError);
-}
 
 
 

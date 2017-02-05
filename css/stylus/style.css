@@ -467,7 +467,7 @@ ons-range[disabled] .range {
 }
 .range::-ms-fill-lower {
   height: 2px;
-  background-color: #3d74ff;
+  background-color: #fff;
 }
 .range::-ms-tooltip {
   display: none;
@@ -482,7 +482,7 @@ ons-range[disabled] .range {
   top: 17px;
   height: 2px;
   width: 0;
-  background-color: #3d74ff;
+  background-color: #fff;
   pointer-events: none;
 }
 [disabled] > .range__left,
@@ -1037,7 +1037,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -1046,7 +1046,7 @@ ons-range[disabled] .range {
   transition: none;
 }
 .button:active {
-  background-color: #3d74ff;
+  background-color: #fff;
   transition: none;
   opacity: 0.2;
 }
@@ -1069,17 +1069,17 @@ ons-range[disabled] .range {
 */
 .button--outline {
   background-color: transparent;
-  border: 1px solid #3d74ff;
-  color: #3d74ff;
+  border: 1px solid #fff;
+  color: #fff;
 }
 .button--outline:active {
-  background-color: rgba(61,116,255,0.2);
-  border: 1px solid #3d74ff;
-  color: #3d74ff;
+  background-color: rgba(255,255,255,0.2);
+  border: 1px solid #fff;
+  color: #fff;
   opacity: 1;
 }
 .button--outline:hover {
-  border: 1px solid #3d74ff;
+  border: 1px solid #fff;
   transition: 0;
 }
 /* topdoc
@@ -1139,7 +1139,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -1147,7 +1147,7 @@ ons-range[disabled] .range {
   border: 1px solid transparent;
   box-shadow: none;
   background: transparent;
-  color: #3d74ff;
+  color: #fff;
   border: none;
 }
 .button--quiet:disabled,
@@ -1168,7 +1168,7 @@ ons-range[disabled] .range {
   border: none;
   transition: none;
   opacity: 0.2;
-  color: #3d74ff;
+  color: #fff;
 }
 /* topdoc
   name: Call To Action Button
@@ -1208,7 +1208,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -1251,7 +1251,7 @@ ons-range[disabled] .range {
   text-align: center;
 }
 .button--large:active {
-  background-color: #3d74ff;
+  background-color: #fff;
   transition: none;
   opacity: 0.2;
   transition: none;
@@ -1305,7 +1305,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -1318,13 +1318,13 @@ ons-range[disabled] .range {
   background: transparent;
   border: 1px solid transparent;
   box-shadow: none;
-  color: #3d74ff;
+  color: #fff;
   text-align: center;
 }
 .button--large--quiet:active {
   transition: none;
   opacity: 0.2;
-  color: #3d74ff;
+  color: #fff;
   background: transparent;
   border: 1px solid transparent;
   box-shadow: none;
@@ -1378,7 +1378,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -1453,7 +1453,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -1527,7 +1527,7 @@ ons-range[disabled] .range {
   letter-spacing: 0;
   color: #fff;
   vertical-align: middle;
-  background-color: #3d74ff;
+  background-color: #fff;
   border: 0px solid currentColor;
   border-radius: 3px;
   transition: none;
@@ -2482,11 +2482,11 @@ ons-range[disabled] .range {
   appearance: none;
 }
 .checkbox__input:checked {
-  background: #3d74ff;
+  background: #fff;
 }
 .checkbox__input:checked + .checkbox__checkmark:before {
-  background: #3d74ff;
-  border: 1px solid #3d74ff;
+  background: #fff;
+  border: 1px solid #fff;
 }
 .checkbox__input:checked + .checkbox__checkmark:after {
   opacity: 1;
@@ -2499,7 +2499,7 @@ ons-range[disabled] .range {
   width: 24px;
   height: 24px;
   background: transparent;
-  border: 1px solid #3d74ff;
+  border: 1px solid #fff;
   border-radius: 16px;
   box-shadow: none;
   left: 0;
@@ -2674,7 +2674,7 @@ ons-range[disabled] .range {
   width: 12px;
   height: 6px;
   background: transparent;
-  border: 3px solid #3d74ff;
+  border: 3px solid #fff;
   border-width: 2px;
   border-top: none;
   border-right: none;
@@ -2888,7 +2888,7 @@ ons-range[disabled] .range {
   width: 12px;
   height: 6px;
   background: transparent;
-  border: 3px solid #3d74ff;
+  border: 3px solid #fff;
   border-width: 2px;
   border-top: none;
   border-right: none;
@@ -4557,7 +4557,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .alert-dialog-button--primal {
   font-weight: 500;
 }
-.alert-dialog-footer--one {
+.alert-dialog-footer--rowfooter {
   white-space: nowrap;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4567,7 +4567,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   display: flex;
   flex-wrap: wrap;
 }
-.alert-dialog-button--one {
+.alert-dialog-button--rowfooter {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-box-flex: 1;
@@ -4579,7 +4579,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   border-left: 1px solid #ddd;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .alert-dialog-button--one {
+  .alert-dialog-button--rowfooter {
     border-top: none;
     border-left: none;
     background-size: 100% 1px, 1px 100%;
@@ -4588,11 +4588,11 @@ input[type="search"].search-input::-webkit-search-cancel-button {
     background-image: linear-gradient(0deg, transparent, transparent 50%, #ddd 50%), linear-gradient(90deg, transparent, transparent 50%, #ddd 50%);
   }
 }
-.alert-dialog-button--one:first-child {
+.alert-dialog-button--rowfooter:first-child {
   border-left: none;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .alert-dialog-button--one:first-child {
+  .alert-dialog-button--rowfooter:first-child {
     border-top: none;
     background-size: 100% 1px;
     background-repeat: no-repeat;
@@ -4668,10 +4668,10 @@ input[type="search"].search-input::-webkit-search-cancel-button {
           Hello World!
         </div>
 
-        <div class="alert-dialog-footer alert-dialog-footer--one">
-          <button class="alert-dialog-button alert-dialog-button--one">Left</button>
-          <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--one">Center</button>
-          <button class="alert-dialog-button alert-dialog-button--one">Right</button>
+        <div class="alert-dialog-footer alert-dialog-footer--rowfooter">
+          <button class="alert-dialog-button alert-dialog-button--rowfooter">Left</button>
+          <button class="alert-dialog-button alert-dialog-button--primal alert-dialog-button--rowfooter">Center</button>
+          <button class="alert-dialog-button alert-dialog-button--rowfooter">Right</button>
         </div>
       </div>
     </div>
@@ -4754,13 +4754,13 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .alert-dialog-button--material:active {
   background-color: initial;
 }
-.alert-dialog-button--one--material,
-.alert-dialog-button--one--material:first-child {
+.alert-dialog-button--rowfooter--material,
+.alert-dialog-button--rowfooter--material:first-child {
   border: 0;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .alert-dialog-button--one--material,
-  .alert-dialog-button--one--material:first-child {
+  .alert-dialog-button--rowfooter--material,
+  .alert-dialog-button--rowfooter--material:first-child {
     background: none;
   }
 }
