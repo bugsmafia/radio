@@ -43,10 +43,11 @@
 </ons-modal>
 
 <ons-tabbar  animation="fade"  var="myTabbar">
-	<ons-tab label="Радио" page="index.html" active></ons-tab>
-	<ons-tab label="ТОП" page="top.html"></ons-tab>
-	<ons-tab label="Новинки" page="new.html"></ons-tab>
-	<ons-tab label="Настройки" page="conf.html"></ons-tab>
+	<ons-tab label="Радио" icon="md-input-antenna" page="index.html" active></ons-tab>
+	<ons-tab label="ТОП" icon="md-fire" page="top.html"></ons-tab>
+	<ons-tab label="Новинки" icon="md-fire" page="new.html"></ons-tab>
+	<ons-tab label="Любимые" icon="md-favorite" page="love.html"></ons-tab>
+	<ons-tab label="Настройки" icon="md-settings" page="conf.html"></ons-tab>
 </ons-tabbar>
 
 <ons-template id="index.html">
@@ -56,7 +57,7 @@
 				<div class="song">Загрузка...</div><div class="artist">ожидайте</div>
 			</div>
 			<div class="right">
-			<ons-toolbar-button><i class="zmdi zmdi-favorite-outline"></i></ons-toolbar-button>
+			<ons-toolbar-button id="LoveTrackNow" onclick="GoLoveTrackNow()"><i class="zmdi zmdi-favorite-outline"></i></ons-toolbar-button>
 			<ons-toolbar-button onclick="ShareTrack()"><i class="zmdi zmdi-share"></i></ons-toolbar-button>
 			</div>
 		</ons-toolbar>
@@ -111,6 +112,17 @@
 		<ul class="list" id="newtrack"></ul>
 	</ons-page>
 </ons-template>
+
+<ons-template id="love.html">
+	<ons-page id="love">
+		<ons-toolbar>
+			<div class="center">Любимые треки</div>
+		</ons-toolbar>
+		<ul class="list" id="LoveTrack"></ul>
+	</ons-page>
+</ons-template>
+
+
 <ons-template id="conf.html">
 	<ons-page id="conf">
 		<ons-toolbar>
@@ -122,7 +134,8 @@
 <script src="js/onsenui.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jQuery.fastClick.js"></script>
-
+<script src="js/jquery.md5.js"></script>
+<script src="js/LoveTrack.js"></script>
 <script src="js/script.js"></script>
 </body>
 
