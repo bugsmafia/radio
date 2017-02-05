@@ -61,9 +61,7 @@
 			LoveBD = JSON.parse(localStorage.getItem('LoveBD'));
 			$("#LoveTrackNow i").removeClass("zmdi-favorite-outline").addClass("zmdi-favorite");
 			
-			$himg =  'images/no-image.png';
-			jQuery('#LoveTrack').prepend('<li class="list__item"  id="LoveId'+maxLove+'"><div class="list__item__left"><img class="list__item__thumbnail" src="'+$himg+'" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+localStorage.getItem("NowSong")+'</div><div class="list__item__subtitle">'+localStorage.getItem("NowArtist")+'</div></div></li>');
-			infoCookieNow('LoveTrack', 'LoveId'+maxLove, object.md, object.a, object.s);
+			LoadLove('1');
 		} else {
 			$("#LoveTrackNow i").removeClass("zmdi-favorite-outline").addClass("zmdi-favorite");
 		}
