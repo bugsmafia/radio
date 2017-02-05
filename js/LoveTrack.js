@@ -1,4 +1,3 @@
-
 	var LoveBD = [];
 	if (localStorage.getItem('LoveBD')){
 		console.log('База любимых треков в наличии');
@@ -25,6 +24,15 @@
 			$("#LoveTrackNow i").removeClass("zmdi-favorite").addClass("zmdi-favorite-outline");
 		}
 	}
+	
+	function DelLoveTrackBase(id){
+		LoveBD = JSON.parse(localStorage.getItem('LoveBD'));
+		LoveBD.splice(id, 1);
+		localStorage.setItem('LoveBD', JSON.stringify(LoveBD));
+		LoveBD = JSON.parse(localStorage.getItem('LoveBD'));
+		LoadLove('1');
+	}
+	
 	function GoLoveTrackNow(){
 		console.log('Добавление в любимые треки. Текущий трек.');
 		var md5Love = localStorage.getItem('NowArtist')+' - '+localStorage.getItem('NowSong');
@@ -60,3 +68,19 @@
 			$("#LoveTrackNow i").removeClass("zmdi-favorite-outline").addClass("zmdi-favorite");
 		}
 	}
+	
+	function LoadLove(code){
+		$key = 0;
+		if(code == 1){
+			jQuery('#LoveTrack').html('');
+		}
+		jQuery.each(LoveBD, function(key, object){
+			if (object.md == 'f574aa2039805a9c1283398934788232'){
+			} else {
+			$himg =  'images/no-image.png';
+			jQuery('#LoveTrack').prepend('<li class="list__item"  id="LoveId'+key+'"><div class="list__item__left"><img class="list__item__thumbnail" src="'+$himg+'" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.s+'</div><div class="list__item__subtitle">'+object.a+'</div></div><div class="list__item__right"><button class="button--quiet" onclick="DelLoveTrackBase('+key+')"><i class="zmdi zmdi-close"></i></button></div></li>');
+			infoCookieNow('LoveTrack', 'LoveId'+key, object.md, object.a, object.s);
+			}
+		});
+	
+}

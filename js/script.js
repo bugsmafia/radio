@@ -12,6 +12,8 @@ document.addEventListener('init', function(event) {
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
+	
+	LoadLove();
 }
 // Функция исполнения когда приложение готово
 function onDeviceReady() {
@@ -306,25 +308,15 @@ function LoadHistory(){
 }
 
 
-function LoadLove(){
-		$key = 0;
-	//jQuery('#hottrack').html('').attr('class', '');
-		jQuery.each(LoveBD, function(key, object){
-			if (object.md == 'f574aa2039805a9c1283398934788232'){
-			} else {
-			$himg =  'images/no-image.png';
-			jQuery('#LoveTrack').prepend('<li class="list__item"  id="LoveId'+key+'"><div class="list__item__left"><img class="list__item__thumbnail" src="'+$himg+'" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.s+'</div><div class="list__item__subtitle">'+object.a+'</div></div></li>');
-			infoCookieNow('LoveTrack', 'LoveId'+key, object.md, object.a, object.s);
-			}
-		});
-	
-}
+
 
 // Устанавливаем первоначальное значение куки о треке
 localStorage.setItem('TrackIdNow', '');
 LoadStatus();
+
 LoadHot();
 LoadHistory();
+
 // Каждые 15 секунд запрашиваем статус эфира
 setInterval(function(){
 	LoadStatus();
@@ -562,6 +554,9 @@ setInterval(function(){
  
  
 ons.ready(function() {
+	
+	
+	
 	function events(action) {
 		switch(action) {
 			case 'music-controls-next':
