@@ -569,19 +569,11 @@ ons.ready(function() {
 				break;
 		}
 	} 
-if(!MusicControls){
-	MusicControls.subscribe(events);
-	MusicControls.listen();
-}
+	if(!MusicControls){
+		MusicControls.subscribe(events);
+		MusicControls.listen();
+	}
 
-
-
-  
-	
-	jQuery("#volume").on('input', function () {
-		var volume = jQuery("#volume").val();
-		window.plugins.mediaVolume.setVol(volume);
-		console.log(volume);
-	});
+	window.youtube.init("AIzaSyDK0GC82T_MbUt_4LKTUEdrK3QQ8ORUH_0");
 
 }); 
