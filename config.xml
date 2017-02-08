@@ -32,7 +32,6 @@
 	<preference name="KeepRunning" value="true"/>
 	<preference name="DisallowOverscroll" value="true"/>
 	<preference name="Orientation" value="portrait"/>
-	<preference name="SplashScreenDelay" value="1000"/>
 	<preference name="Fullscreen" value="false"/>
 
 <!-- <preference name="xwalkVersion" value="13" /> -->
@@ -86,7 +85,7 @@
 <plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" />
 <plugin spec="https://github.com/zhaoxinpeng/mediaVolume.git" source="git" /> 
 
-<plugin spec="https://github.com/XeniousSoftware/cordova-plugin-splashscreen.git" source="git" /> 
-<preference name="SplashScreenDelay" value="10000" />
+
+<plugin spec="https://github.com/RemcoB00/cordova-phonegap_youtube_player_api_android.git" source="git" /> 
 </widget>
   
