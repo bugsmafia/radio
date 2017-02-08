@@ -330,6 +330,7 @@ function UpdateStatus(now) {
 				BaseLoveTrack();
 			}, 2000);
 			localStorage.setItem('TrackIdNow', data.id);
+			localStorage.setItem('TrackIdBaseNow', data.c);
 			var md = data.a+' - '+data.s;
 			md = $.md5(md);
 			infoAlbum('playinfo', 'playinfoimg', md, data.a, data.s);
