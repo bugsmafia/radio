@@ -86,6 +86,6 @@
 <plugin spec="https://github.com/zhaoxinpeng/mediaVolume.git" source="git" /> 
 
 
-<plugin spec="https://github.com/RemcoB00/cordova-phonegap_youtube_player_api_android.git" source="git" /> 
+<plugin spec="https://github.com/ydatech/cordova-phonegap_youtube_player_api_android.git" source="git" /> 
 </widget>
   
