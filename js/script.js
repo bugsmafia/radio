@@ -352,7 +352,7 @@ function statusBar(img){
 	MusicControls.create({
 		track: localStorage.NowSong,
 		artist: localStorage.NowArtist,
-		cover: img,
+		cover: 'icon.png',
 		isPlaying: Playing,
 		
 		dismissable : true,
