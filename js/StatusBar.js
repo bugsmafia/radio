@@ -3,16 +3,23 @@
 function StatusBarEvents(action) {
     switch(action) {
         case 'music-controls-pause':
-            // Нажата пауза
-			console.log('Нажата пауза');
+            OneclickStop = 3;
+			$my_media.stop();
+			MusicControls.updateIsPlaying(false);
+			MusicControls.updateDismissable(false);
             break;
         case 'music-controls-play':
             // Нажат Плей
-			console.log('Нажат Плей');
+			OneclickStop = 2;
+			$my_media.play();
+			MusicControls.updateIsPlaying(true);
+			MusicControls.updateDismissable(true);
             break;
         case 'music-controls-destroy':
-            // Закрыли
-			console.log('Закрыли');
+            OneclickStop = 3;
+			$my_media.stop();
+			MusicControls.updateIsPlaying(false);
+			MusicControls.updateDismissable(false);
             break;
 
         // Headset events (Android only)
