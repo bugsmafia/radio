@@ -3,7 +3,10 @@ function getPageName(url) {
     var filenameWithExtension = url.substr(index);
     return filenameWithExtension;
 }
-
+function exit(){
+	var thisWindow = window.open("index.html",'_self');
+	thisWindow.close();
+}
 document.addEventListener('init', function(event) {
 
 });
@@ -17,10 +20,15 @@ function onLoad() {
 	LoadLove();
 }
 // Функция исполнения когда приложение готово
-function onDeviceReady() {
+function onDeviceReady() {	
+	if(localStorage.getItem('bg') == 1){
+			localStorage.setItem('bg', '0');
+			navigator.app.exitApp();
+	}
     document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
 	document.addEventListener("backbutton", onBackKeyDown, false);
+	BgMode();
 }
 
 // Функция при нажатии кнопки НАЗАД
@@ -385,22 +393,28 @@ var onError = function(msg) {}
 		if (streamer == "1") {
 			OneclickStop = 2;
 			$my_media.play();
-
+			MusicControls.updateIsPlaying(true);
+			MusicControls.updateDismissable(true);
 			
 		} else if (streamer == "2") {
 			OneclickStop = 3;
 			$my_media.stop();
+			MusicControls.updateIsPlaying(false);
+			MusicControls.updateDismissable(false);
 
 			
 		} else if (streamer == "3") {
 			OneclickPlay = 2;
 			OneclickStop = 3;
 			$my_media.stop();
+			MusicControls.updateIsPlaying(false);
+			MusicControls.updateDismissable(false);
 			
 		} else if (streamer == "4") {
 			OneclickStop = 2;
 			$my_media.play();
-
+			MusicControls.updateIsPlaying(true);
+			MusicControls.updateDismissable(true);
 			
 		};
 	}
