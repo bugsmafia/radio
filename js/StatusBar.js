@@ -1,17 +1,18 @@
-MusicControls.destroy(onSuccess, onError);
+
+
 function StatusBarEvents(action) {
     switch(action) {
         case 'music-controls-pause':
-            // Нажата пауза
-			console.log('Нажата пауза');
+            // РќР°Р¶Р°С‚Р° РїР°СѓР·Р°
+			console.log('РќР°Р¶Р°С‚Р° РїР°СѓР·Р°');
             break;
         case 'music-controls-play':
-            // Нажат Плей
-			console.log('Нажат Плей');
+            // РќР°Р¶Р°С‚ РџР»РµР№
+			console.log('РќР°Р¶Р°С‚ РџР»РµР№');
             break;
         case 'music-controls-destroy':
-            // Закрыли
-			console.log('Закрыли');
+            // Р—Р°РєСЂС‹Р»Рё
+			console.log('Р—Р°РєСЂС‹Р»Рё');
             break;
 
         // Headset events (Android only)
@@ -32,14 +33,17 @@ function StatusBarEvents(action) {
             break;
     }
 }
+function StatusBarGo() {
+	MusicControls.destroy(onSuccess, onError);
+	// Register callback
+	MusicControls.subscribe(StatusBarEvents);
+	MusicControls.listen();
+	
+	MusicControls.create({
+		track       : 'Р–РёР·РЅСЊ РїСЂРµРєСЂР°СЃРЅР° Рё СѓРґРёРІРёС‚РµР»СЊРЅР°',
+		artist      : 'Р Р°РґРёРѕ 13',
+		cover       : 'icon.png',
+		isPlaying   : false
+	}, onSuccess, onError);
+}
 
-// Register callback
-MusicControls.subscribe(StatusBarEvents);
-MusicControls.listen();
-
-MusicControls.create({
-	track       : 'Time is Running Out',
-	artist      : 'Muse',
-    cover       : 'icon.png',
-	isPlaying   : true
-}, onSuccess, onError);

@@ -14,6 +14,7 @@ document.addEventListener('init', function(event) {
 // Функция выполнения кода при загрузки приложения
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("deviceready", StatusBarGo, false);
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 	
 	LoadHot();
