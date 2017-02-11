@@ -29,7 +29,10 @@ function onDeviceReady() {
     document.addEventListener("pause", onPause, false);
     document.addEventListener("resume", onResume, false);
 	document.addEventListener("backbutton", onBackKeyDown, false);
-	BgMode();
+	setTimeout(function() {
+		BgMode();
+	}, 2000);
+	
 }
 
 // Функция при нажатии кнопки НАЗАД
