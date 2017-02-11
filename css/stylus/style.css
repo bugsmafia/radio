@@ -5018,6 +5018,9 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   color: #fff;
   white-space: normal;
 }
+.modal__content .page__content {
+  margin: 1rem;
+}
 /* topdoc
   name: Progress Bar
   class: progres-bar
