@@ -54,8 +54,8 @@ function onResume() {}
 // Вызов модальных окон
 function modals(name) {
 	switch (name) {
-		case "config":
-			document.querySelector("#Modal_Config").toggle();
+		case "PolitConf":
+			document.querySelector("#Modal_PolitConf").toggle();
 		break;
 		case "about":
 			document.querySelector("#Modal_About").toggle();
