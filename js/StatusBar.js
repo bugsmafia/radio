@@ -41,6 +41,7 @@ function StatusBarEvents(action) {
     }
 }
 function StatusBarGo() {
+	/*
 	MusicControls.destroy(onSuccess, onError);
 	// Register callback
 	MusicControls.subscribe(StatusBarEvents);
@@ -52,5 +53,7 @@ function StatusBarGo() {
 		cover       : 'icon.png',
 		isPlaying   : false
 	}, onSuccess, onError);
+	
+	*/
 }
 
