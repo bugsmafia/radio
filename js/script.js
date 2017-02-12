@@ -10,7 +10,8 @@ function exit(){
 document.addEventListener('init', function(event) {
 
 });
-
+var showDialog = function(id) { document.getElementById(id).show();};
+var hideDialog = function(id) {  document.getElementById(id).hide();};
 // Функция выполнения кода при загрузки приложения
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -19,6 +20,26 @@ function onLoad() {
 	
 	LoadHot();
 	LoadLove();
+	
+	 // Установка чека в настройки качества стрима
+	if(localStorage.getItem('StreamQ')){
+		if(localStorage.getItem('StreamQ') == '32'){
+			$("#StreamQ32" ).prop("checked", true );
+		}
+		if(localStorage.getItem('StreamQ') == '64'){
+			$("#StreamQ64" ).prop("checked", true );
+		}
+		if(localStorage.getItem('StreamQ') == '128'){
+			$("#StreamQ128" ).prop("checked", true );
+		}
+		if(localStorage.getItem('StreamQ') == 'auto'){
+			$("#StreamQAuto" ).prop("checked", true );
+		}
+		
+		
+	} else {
+		$("#StreamQAuto" ).prop("checked", true );
+	}
 }
 // Функция исполнения когда приложение готово
 function onDeviceReady() {	
@@ -66,8 +87,7 @@ function modals(name) {
 	};
 } 
 
-// Канал трансляции
-var streamChanel = "http://play.radio13.ru/64";
+
 
 
 function infoCookie(type, id, md, artist, song){
@@ -422,12 +442,61 @@ var onError = function(msg) {}
 			
 		};
 	}
-    
+   
+	function GetStreamQ(Q){
+		if(Q){
+			if(Q == '32'){
+				localStorage.setItem('StreamQ', Q);
+			}
+			if(Q == '64'){
+				localStorage.setItem('StreamQ', Q);
+			}
+			if(Q == '128'){
+				localStorage.setItem('StreamQ', Q);
+			}
+			if(Q == 'auto'){
+				localStorage.setItem('StreamQ', Q);
+			}
+		} else {
+			localStorage.setItem('StreamQ', 'auto');
+		}
+		if(streamer){
+			if(streamer != 1){
+				streamplay();
+			}
+		}
+	}
+	// Канал трансляции
+	function streamChanel() {
+		var chanel = "http://play.radio13.ru/64";
+		if(localStorage.getItem('StreamQ')){
+			if(localStorage.getItem('StreamQ') == '32'){
+				chanel = "http://play.radio13.ru/32";
+				return chanel;
+			}
+			if(localStorage.getItem('StreamQ') == '64'){
+				chanel = "http://play.radio13.ru/64";
+				return chanel;
+			}
+			if(localStorage.getItem('StreamQ') == '128'){
+				chanel = "http://play.radio13.ru/64";
+				return chanel;
+			}
+			if(localStorage.getItem('StreamQ') == 'auto'){
+				chanel = "http://play.radio13.ru/64";
+				return chanel;
+			}
+		} else {
+			localStorage.setItem('StreamQ', 'auto');
+			chanel = "http://play.radio13.ru/64";
+			return chanel;
+		}		
+	}
 	
 	LoadStream();
 	function LoadStream() {
 		setTimeout(function() {
-			$my_media = new PlayStream(streamChanel, function (status){
+			$my_media = new PlayStream(streamChanel(), function (status){
 					console.log("status - "+status);
 					if(status === PlayStream.MEDIA_STOPPED){
 						console.log('stopped');

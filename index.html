@@ -82,7 +82,13 @@
 <p style="text-align: center;">Пожалуйста, подождите... </br>Загружаем изображение альбома</p>
 <p style="text-align: center;"><ons-progress-circular indeterminate></ons-progress-circular></p>
 </ons-modal>
+<ons-dialog id="premium">
+	<div style="text-align: center; padding: 10px;">
+    <p style="color: #fff;">Функция доступна только по подписке.<p>
 
+	<p><ons-button onclick="hideDialog('premium')">Хорошо</ons-button></p>
+	</div>
+</ons-dialog>
 <ons-tabbar  animation="fade"  var="myTabbar">
 	<ons-tab label="Радио" icon="md-input-antenna" page="index.html" active></ons-tab>
 	<ons-tab label="ТОП" icon="md-fire" page="top.html"></ons-tab>
@@ -172,16 +178,16 @@
 		</ons-toolbar>
 		<ul class="list">
 	<li class="list__header">Настройка трансляции</li>
-	<li class="list__item list__item--tappable">
+	<li class="list__item list__item--tappable" onclick="showDialog('premium')">
 		<div class="list__item__right">
 			<label class="radio-button">
-				<input type="radio" id="StreamQ128" class="radio-button__input" name="StreamQ">
+				<input type="radio" id="StreamQ128" class="radio-button__input" name="StreamQ" disabled>
 				<div class="radio-button__checkmark"></div>
 			</label>
 		</div>
 		<label for="StreamQ128" class="list__item__center">Высокое 128kb/s</label>
 	</li>
-	<li class="list__item list__item--tappable">
+	<li class="list__item list__item--tappable"  onclick="GetStreamQ('64')">
 		<div class="list__item__right">
 			<label class="radio-button">
 				<input type="radio" id="StreamQ64" class="radio-button__input" name="StreamQ">
@@ -190,7 +196,7 @@
 		</div>
 		<label for="StreamQ64" class="list__item__center">Хорошее 64kb/s</label>
 	</li>
-	<li class="list__item list__item--tappable">
+	<li class="list__item list__item--tappable"  onclick="GetStreamQ('32')">
 		<div class="list__item__right">
 			<label class="radio-button">
 				<input type="radio" id="StreamQ32" class="radio-button__input" name="StreamQ">
@@ -199,7 +205,7 @@
 		</div>
 		<label for="StreamQ32" class="list__item__center">Низкое 32kb/s</label>
 	</li>
-	<li class="list__item list__item--tappable">
+	<li class="list__item list__item--tappable"  onclick="GetStreamQ('auto')">
 		<div class="list__item__right">
 			<label class="radio-button">
 				<input type="radio" id="StreamQAuto" class="radio-button__input" name="StreamQ"  checked="checked">
@@ -216,6 +222,8 @@
 		</li>
 		</ul>
 	</ons-page>
+	
+
 </ons-template>
 <script src="js/onsenui.min.js"></script>
 <script src="js/jquery.min.js"></script>
