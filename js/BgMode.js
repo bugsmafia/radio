@@ -7,5 +7,5 @@ function BgMode(){
 		hidden: false
 	})
 	cordova.plugins.backgroundMode.enable();
-	cordova.plugins.backgroundMode.configure({ silent: true });
+	//cordova.plugins.backgroundMode.configure({ silent: true });
 }

@@ -5510,5 +5510,19 @@ div#LoadAlbImg {
   font-weight: 100;
 }
 .navigation-bar__right i {
-  vertical-align: sub;
+  vertical-align: middle;
+}
+#hottrack .label {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  background: rgba(0,0,0,0.34);
+  font-size: 0.6em;
+  border-radius: 6px;
+  position: absolute;
+  top: 36px;
+  left: 38px;
+  color: #fff;
 }

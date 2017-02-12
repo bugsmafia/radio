@@ -19,6 +19,7 @@ function onLoad() {
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 	
 	LoadHot();
+	LoadNewTrack();
 	LoadLove();
 	
 	 // Установка чека в настройки качества стрима
@@ -313,18 +314,7 @@ function LoadStatus() {
 	});
 }
 
-function LoadHistory(){
-	$key = 0;
-	//jQuery('#newtrack').html('').attr('class', '');
-	$himg =  'images/no-image.png';
-	jQuery.getJSON("http://app.radio13.ru/status/json.php?i=new", function(data) {
-		jQuery.each(data, function(key, object){				
-			jQuery('#newtrack').append('<li class="list__item" id="'+object.id+'"><div class="list__item__left"><img class="list__item__thumbnail" src="'+$himg+'" alt="Cute kitten"></div><div class="list__item__center"><div class="list__item__title">'+object.song+'</div><div class="list__item__subtitle">'+object.artist+'</div></div></li>');
-			infoCookieNow('newtrack', object.id, object.md, object.artist, object.song);
-		});
 
-	});		
-}
 
 
 
@@ -334,7 +324,7 @@ localStorage.setItem('TrackIdNow', '');
 LoadStatus();
 
 
-LoadHistory();
+
 
 // Каждые 15 секунд запрашиваем статус эфира
 setInterval(function(){
