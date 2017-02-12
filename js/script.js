@@ -460,11 +460,7 @@ var onError = function(msg) {}
 		} else {
 			localStorage.setItem('StreamQ', 'auto');
 		}
-		if(streamer){
-			if(streamer != 1){
-				streamplay();
-			}
-		}
+		LoadStream();
 	}
 	// Канал трансляции
 	function streamChanel() {
