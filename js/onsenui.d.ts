@@ -288,7 +288,7 @@ declare namespace ons {
    */
   class PageLoader {
     internalLoader: Function;
-    load(options: {page: any, parent: Element, params?: Object}, done: Function): void;
+    load(options: {page: any, parent: Element, params?: Object}, done: Function);
   }
 }
 

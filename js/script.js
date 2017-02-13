@@ -7,9 +7,25 @@ function exit(){
 	var thisWindow = window.open("index.html",'_self');
 	thisWindow.close();
 }
+
+
+document.addEventListener('show', function(event) {
+	var page = event.target;
+	if (page.matches('#home')) {
+		alert('home');
+	} else if (page.matches('#top')) {
+		alert('top');
+	}
+});
+
+
 document.addEventListener('init', function(event) {
 
 });
+
+
+
+
 var showDialog = function(id) { document.getElementById(id).show();};
 var hideDialog = function(id) {  document.getElementById(id).hide();};
 // Функция выполнения кода при загрузки приложения
