@@ -78,7 +78,7 @@
 <plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" />
 <plugin spec="https://github.com/apache/cordova-plugin-inappbrowser.git" source="git" />
 <plugin spec="https://github.com/katzer/cordova-plugin-background-mode.git" source="git" />
-
+<plugin spec="https://github.com/bugsmafia/RadioRadioLib.git" source="git" />
 <!-- AIzaSyDK0GC82T_MbUt_4LKTUEdrK3QQ8ORUH_0 -->
 <plugin spec="https://github.com/ydatech/cordova-phonegap_youtube_player_api_android.git" source="git" /> 
 </widget>
