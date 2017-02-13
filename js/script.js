@@ -8,13 +8,35 @@ function exit(){
 	thisWindow.close();
 }
 
-
+var PageHome = false;
+var PageTop = false;
+var PageNew = false;
+var PageLove = false;
+var PageConf = false;
 document.addEventListener('show', function(event) {
 	var page = event.target;
 	if (page.matches('#home')) {
-		alert('home');
+
 	} else if (page.matches('#top')) {
-		alert('top');
+		// Горячая ротация
+		if(PageTop == false){
+			LoadHot();
+			PageTop = true;
+		}		
+	} else if (page.matches('#new')) {
+		// Новинки эфира		
+		if(PageNew == false){
+			LoadNewTrack();
+			PageNew = true;
+		}	
+	} else if (page.matches('#love')) {
+		// Избранные		
+		if(PageLove == false){
+			LoadLove();
+			PageLove = true;
+		}	
+	} else if (page.matches('#conf')) {
+		// Страница настроек
 	}
 });
 
@@ -34,9 +56,9 @@ function onLoad() {
 	document.addEventListener("deviceready", StatusBarGo, false);
 	$('.page__background').html('<div id="gradient2"></div><div id="gradient"></div>');
 	
-	LoadHot();
-	LoadNewTrack();
-	LoadLove();
+	
+	
+	
 	
 	 // Установка чека в настройки качества стрима
 	if(localStorage.getItem('StreamQ')){
