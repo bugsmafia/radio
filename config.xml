@@ -72,7 +72,7 @@
 <plugin spec="https://github.com/apache/cordova-plugin-statusbar.git" source="git" />
 	<preference name="StatusBarBackgroundColor" value="#151515" />
 <plugin spec="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git" source="git" />
-<plugin spec="https://github.com/renanoliveira/cordova-phone-call-trap.git" source="git" /> 
+<!--<plugin spec="https://github.com/renanoliveira/cordova-phone-call-trap.git" source="git" />  -->
 <plugin spec="https://github.com/homerours/cordova-music-controls-plugin.git" source="git" />
 <plugin spec="https://github.com/phonegap/phonegap-plugin-contentsync.git" source="git" />
 <plugin spec="https://github.com/apache/cordova-plugin-network-information.git" source="git" />
