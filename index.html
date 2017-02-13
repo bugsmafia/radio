@@ -91,14 +91,15 @@
 	<p><ons-button onclick="hideDialog('premium')">Хорошо</ons-button></p>
 	</div>
 </ons-dialog>
-<ons-tabbar  animation="fade"  var="myTabbar">
-	<ons-tab label="Радио" icon="md-input-antenna" page="index.html" active></ons-tab>
-	<ons-tab label="ТОП" icon="md-fire" page="top.html"></ons-tab>
-	<ons-tab label="Новинки" icon="md-fire" page="new.html"></ons-tab>
-	<ons-tab label="Любимые" icon="md-favorite" page="love.html"></ons-tab>
-	<ons-tab label="Настройки" icon="md-settings" page="conf.html"></ons-tab>
-</ons-tabbar>
-
+<ons-page>
+	<ons-tabbar  animation="fade"  var="myTabbar">
+		<ons-tab label="Радио" icon="md-input-antenna" page="index.html" active></ons-tab>
+		<ons-tab label="ТОП" icon="md-fire" page="top.html"></ons-tab>
+		<ons-tab label="Новинки" icon="md-fire" page="new.html"></ons-tab>
+		<ons-tab label="Любимые" icon="md-favorite" page="love.html"></ons-tab>
+		<ons-tab label="Настройки" icon="md-settings" page="conf.html"></ons-tab>
+	</ons-tabbar>
+</ons-page>
 <ons-template id="index.html">
 	<ons-page id="home">
 		<ons-toolbar>
